@@ -9,903 +9,368 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
   --bg:#f5f5f0;
-  --card:#ffffff;
+  --card:#fff;
   --green:#c8f57a;
-  --green-dark:#3d3d3d;
-  --text:#111111;
-  --muted:#888888;
+  --text:#111;
+  --muted:#888;
   --border:#e8e8e4;
+  --btngreen:#e4fdbf;
   --radius:16px;
   --radius-sm:10px;
-  --btn-dark:#111111;
-  --btn-light:#e4fdbf;
 }
 html,body{height:100%;overflow-x:hidden}
-body{
-  font-family:'Quicksand',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-}
-.app{
-  width:100%;
-  max-width:390px;
-  min-height:100vh;
-  background:var(--bg);
-  display:flex;
-  flex-direction:column;
-  padding:0 0 80px;
-}
+body{font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center}
 
-/* LOGO HEADER */
-.logo-header{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:40px 24px 24px;
-}
-.logo-img{
-  width:90px;
-  height:90px;
-  margin-bottom:20px;
-}
-.greeting{
-  font-size:26px;
-  font-weight:700;
-  text-align:center;
-  margin-bottom:8px;
-  line-height:1.2;
-}
-.greeting-sub{
-  font-size:14px;
-  color:var(--muted);
-  text-align:center;
-  line-height:1.5;
-  max-width:280px;
-}
+/* APP WRAPPER */
+.app{width:100%;max-width:430px;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;position:relative;padding-bottom:72px}
 
-/* SCREENS */
-.screen{display:none}
-.screen.active{display:block}
-
-/* PROGRESS BAR */
-.progress-wrap{
-  display:flex;
-  gap:6px;
-  justify-content:center;
-  padding:0 24px 24px;
-}
-.progress-dot{
-  height:4px;
-  flex:1;
-  max-width:60px;
-  background:var(--border);
-  border-radius:2px;
-  transition:background .3s;
-}
-.progress-dot.active{background:var(--text);}
-
-/* CARDS */
-.card{
-  margin:0 16px 12px;
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:24px;
-  border:1px solid var(--border);
-}
-
-/* SLIDERS */
-.slider-wrap{margin-bottom:4px}
-.slider-label-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
-}
-.slider-label{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.06em;
-  color:var(--muted);
-  text-transform:uppercase;
-}
-.slider-value{
-  font-size:18px;
-  font-weight:700;
-}
-input[type=range]{
-  width:100%;
-  height:6px;
-  border-radius:3px;
-  outline:none;
-  border:none;
-  background:linear-gradient(to right, var(--green) 0%, var(--green) 50%, var(--border) 50%, var(--border) 100%);
-  cursor:pointer;
-  -webkit-appearance:none;
-  appearance:none;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  background:white;
-  border:2px solid var(--border);
-  box-shadow:0 2px 8px rgba(0,0,0,.12);
-  cursor:pointer;
-}
-input[type=range]::-moz-range-thumb{
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  background:white;
-  border:2px solid var(--border);
-  box-shadow:0 2px 8px rgba(0,0,0,.12);
-  cursor:pointer;
-}
-.slider-hint{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:6px;
-}
-
-/* TASK INPUT */
-.task-label{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.06em;
-  color:var(--muted);
-  text-transform:uppercase;
-  margin-bottom:8px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.task-input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:12px 14px;
-  font-family:'Quicksand',sans-serif;
-  font-size:14px;
-  color:var(--text);
-  background:#fafafa;
-  outline:none;
-  transition:border .2s;
-}
-.task-input:focus{border-color:#aaa;}
-.task-hint{font-size:12px;color:var(--muted);margin-top:6px;}
-
-/* BUTTONS */
-.btn-dark{
-  display:block;
-  width:calc(100% - 32px);
-  margin:0 16px 10px;
-  padding:16px;
-  background:var(--btn-dark);
-  color:white;
-  border:none;
-  border-radius:999px;
-  font-family:'Quicksand',sans-serif;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-  text-align:center;
-  transition:transform .15s,opacity .15s;
-}
-.btn-dark:active{transform:scale(.97);opacity:.9}
-.btn-light{
-  display:block;
-  width:calc(100% - 32px);
-  margin:0 16px 10px;
-  padding:14px;
-  background:var(--btn-light);
-  color:var(--text);
-  border:none;
-  border-radius:999px;
-  font-family:'Quicksand',sans-serif;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  text-align:center;
-  transition:transform .15s;
-}
-.btn-light:active{transform:scale(.97)}
-.btn-ghost{
-  display:block;
-  width:calc(100% - 32px);
-  margin:0 16px 10px;
-  padding:14px;
-  background:transparent;
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:999px;
-  font-family:'Quicksand',sans-serif;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  text-align:center;
-  transition:background .15s;
-}
-.btn-ghost:hover{background:var(--border)}
-.btn-row{
-  display:flex;
-  gap:10px;
-  margin:0 16px 10px;
-}
-.btn-row .btn-ghost,.btn-row .btn-dark{
-  margin:0;
-  flex:1;
-  width:auto;
-}
-
-/* SUGERENCIA BOX */
-.tip-box{
-  margin:0 16px 12px;
-  padding:18px 20px;
-  background:var(--btn-light);
-  border-radius:var(--radius);
-  font-size:14px;
-  line-height:1.6;
-  color:var(--text);
-  display:none;
-  font-weight:500;
-}
-.tip-loading{color:var(--muted);font-style:italic;}
-
-/* TIMER */
-.timer-wrap{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:24px 24px 16px;
-}
-.timer-circle{
-  position:relative;
-  width:180px;
-  height:180px;
-  margin-bottom:16px;
-}
-.timer-circle svg{transform:rotate(-90deg)}
-#timer-arc{transition:stroke-dashoffset .5s linear}
-.timer-center{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-.timer-time{
-  font-size:36px;
-  font-weight:700;
-  letter-spacing:-1px;
-}
-.timer-status{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:2px;
-}
-.duration-row{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  margin-bottom:20px;
-}
-.dur-btn{
-  padding:8px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--card);
-  font-family:'Quicksand',sans-serif;
-  font-size:13px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .15s;
-}
-.dur-btn.selected,.dur-btn:hover{
-  background:var(--text);
-  color:white;
-  border-color:var(--text);
-}
-.timer-task{
-  font-size:13px;
-  color:var(--muted);
-  text-align:center;
-  margin-bottom:12px;
-  min-height:18px;
-}
-
-/* VICTORIA */
-.victoria-wrap{
-  display:none;
-  flex-direction:column;
-  align-items:center;
-  padding:16px 24px 24px;
-  animation:popin .4s cubic-bezier(.175,.885,.32,1.275);
-}
-@keyframes popin{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
-.victoria-cat{
-  width:120px;
-  margin-bottom:16px;
-}
-.victoria-title{
-  font-size:22px;
-  font-weight:700;
-  margin-bottom:6px;
-  text-align:center;
-}
-.victoria-sub{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:20px;
-  text-align:center;
-}
-.premio-wrap{
-  width:100%;
-  margin-bottom:12px;
-}
-.premio-input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:12px 14px;
-  font-family:'Quicksand',sans-serif;
-  font-size:14px;
-  color:var(--text);
-  background:#fafafa;
-  outline:none;
-  margin-bottom:10px;
-}
-.premio-input:focus{border-color:#aaa}
-.premio-guardado{
-  display:none;
-  font-size:13px;
-  color:#3a7a1a;
-  font-weight:600;
-  text-align:center;
-  margin-top:8px;
-}
+/* SCREENS - key fix: only .active shows */
+.screen{display:none!important}
+.screen.active{display:flex!important;flex-direction:column}
+.screen-full{min-height:calc(100vh - 72px)}
 
 /* NAV */
-.nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:390px;
-  background:white;
-  border-top:1px solid var(--border);
-  display:flex;
-  padding:8px 0 16px;
-  z-index:100;
-}
-.nav-btn{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  border:none;
-  background:transparent;
-  cursor:pointer;
-  font-family:'Quicksand',sans-serif;
-  font-size:11px;
-  color:var(--muted);
-  font-weight:600;
-  padding:6px 0;
-  transition:color .15s;
-}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;border-top:1px solid var(--border);display:flex;z-index:999;padding:6px 0 10px}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:transparent;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:10px;color:var(--muted);font-weight:600;padding:4px 0}
 .nav-btn.active{color:var(--text)}
-.nav-icon{font-size:20px;line-height:1}
+.nav-icon{font-size:22px;line-height:1}
 
-/* HERRAMIENTAS */
-.section-title{
-  font-size:16px;
-  font-weight:700;
-  margin:20px 16px 12px;
-}
-.vibe-grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:0 16px 4px;
-}
-.vibe-btn{
-  padding:8px 14px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--card);
-  font-family:'Quicksand',sans-serif;
-  font-size:13px;
-  font-weight:500;
-  cursor:pointer;
-  transition:all .15s;
-}
-.vibe-btn.selected,.vibe-btn:hover{
-  background:var(--btn-light);
-  border-color:#aad06a;
-}
+/* LOGO */
+.logo-small{width:40px;height:40px;display:block;margin:20px auto 0}
 
-/* PRIMER PASO */
-.steps-wrap{margin-top:14px}
-.step-item{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding:10px 0;
-  border-bottom:1px solid var(--border);
-}
+/* BUTTONS */
+.btn-dark,.btn-light,.btn-ghost{display:block;width:calc(100% - 32px);margin:0 16px 10px;padding:16px;border-radius:999px;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;border:none;transition:transform .15s,opacity .15s}
+.btn-dark{background:#111;color:#fff}
+.btn-dark:active{transform:scale(.97)}
+.btn-light{background:var(--btngreen);color:var(--text)}
+.btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+.btn-ghost:hover{background:var(--border)}
+.btn-row{display:flex;gap:10px;margin:0 16px 10px}
+.btn-row .btn-ghost,.btn-row .btn-dark{margin:0;flex:1;width:auto}
+
+/* CARDS */
+.card{margin:0 16px 12px;background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid var(--border)}
+
+/* SLIDERS */
+.slider-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.slider-label{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.slider-value{font-size:18px;font-weight:700}
+input[type=range]{width:100%;height:6px;border-radius:3px;outline:none;border:none;background:linear-gradient(to right,var(--green) 0%,var(--green) 50%,var(--border) 50%,var(--border) 100%);cursor:pointer;-webkit-appearance:none;appearance:none;margin-bottom:4px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--border);cursor:pointer}
+.slider-hint{font-size:12px;color:var(--muted);margin-bottom:16px}
+
+/* PROGRESS DOTS */
+.progress-wrap{display:flex;gap:6px;justify-content:center;padding:12px 24px 20px}
+.progress-dot{height:4px;flex:1;max-width:60px;background:var(--border);border-radius:2px;transition:background .3s}
+.progress-dot.active{background:var(--text)}
+
+/* TIP BOX */
+.tip-box{margin:0 16px 12px;padding:18px 20px;background:var(--btngreen);border-radius:var(--radius);font-size:14px;line-height:1.6;font-weight:500}
+
+/* TIMER */
+.timer-screen-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:16px 0}
+.dur-row{display:flex;gap:8px;justify-content:center;margin-bottom:24px}
+.dur-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.dur-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
+.timer-circle{position:relative;width:200px;height:200px;margin-bottom:16px}
+.timer-circle svg{transform:rotate(-90deg)}
+.timer-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.timer-time{font-size:40px;font-weight:700;letter-spacing:-2px}
+.timer-status{font-size:12px;color:var(--muted);margin-top:4px}
+.timer-task-label{font-size:13px;color:var(--muted);text-align:center;margin-bottom:16px;min-height:18px}
+
+/* VICTORIA SCREEN */
+.victoria-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:24px;text-align:center}
+.victoria-cat{width:140px;margin-bottom:20px;animation:popin .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes popin{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* TASK INPUT */
+.task-input{width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:'Quicksand',sans-serif;font-size:14px;color:var(--text);background:#fafafa;outline:none;transition:border .2s}
+.task-input:focus{border-color:#aaa}
+.task-hint{font-size:12px;color:var(--muted);margin-top:6px}
+textarea.task-input{resize:none;min-height:80px}
+
+/* SECTIONS */
+.section-title{font-size:16px;font-weight:700;margin:16px 16px 10px}
+.step-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
 .step-item:last-child{border-bottom:none}
-.step-num{
-  width:24px;
-  height:24px;
-  border-radius:50%;
-  background:var(--btn-light);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  font-weight:700;
-  flex-shrink:0;
-  margin-top:1px;
-}
-.step-text{font-size:14px;line-height:1.5}
-
-/* RECURSOS */
-.planner-item{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
-}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--btngreen);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.reminder{padding:12px 14px;background:var(--btngreen);border-radius:var(--radius-sm);font-size:13px;font-weight:600;margin-bottom:8px;line-height:1.4}
+.planner-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
 .planner-item:last-child{border-bottom:none}
-.planner-emoji{font-size:24px;flex-shrink:0}
 .planner-info{flex:1}
 .planner-name{font-size:14px;font-weight:700}
 .planner-desc{font-size:12px;color:var(--muted);margin-top:2px}
-.planner-price{font-size:14px;font-weight:700}
-.freebie-card{
-  margin:12px 16px;
-  background:var(--btn-light);
-  border-radius:var(--radius);
-  padding:20px;
-}
-.freebie-title{font-size:15px;font-weight:700;margin-bottom:6px}
-.freebie-desc{font-size:13px;color:#555;margin-bottom:14px;line-height:1.5}
-.social-row{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px}
-.social-btn{
-  padding:8px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:white;
-  font-family:'Quicksand',sans-serif;
-  font-size:13px;
-  font-weight:700;
-  color:var(--text);
-  text-decoration:none;
-  transition:background .15s;
-}
-.social-btn:hover{background:var(--btn-light)}
-
-/* RECORDATORIOS */
-.reminder{
-  padding:14px 16px;
-  background:var(--btn-light);
-  border-radius:var(--radius-sm);
-  font-size:14px;
-  font-weight:600;
-  margin-bottom:8px;
-  line-height:1.4;
-}
-
-/* VIVENCIAS */
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tag-btn{
-  padding:6px 12px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:white;
-  font-family:'Quicksand',sans-serif;
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .15s;
-}
-.tag-btn.selected{background:var(--text);color:white;border-color:var(--text)}
-textarea.task-input{resize:none;min-height:80px}
-.feed-entry{
-  display:flex;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
-}
+.tag-btn{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:#fff;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.tag-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
+.feed-entry{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
 .feed-entry:last-child{border-bottom:none}
-.feed-avatar{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:var(--btn-light);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:13px;
-  font-weight:700;
-  flex-shrink:0;
-}
-.feed-name{font-size:13px;font-weight:700;margin-bottom:2px}
-.feed-pill{
-  display:inline-block;
-  font-size:10px;
-  padding:2px 8px;
-  border-radius:999px;
-  font-weight:700;
-  margin-left:4px;
-}
-
-/* FIX CENTRADO WELCOME */
-#screen-welcome.active{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  text-align:center;
-}
-
-/* Ajuste interno para que no quede raro */
-#screen-welcome .logo-header{
-  padding:0;
-}
-
-/* Botón centrado real */
-#screen-welcome .btn-dark{
-  width:auto;
-  padding:16px 32px;
-  margin:20px 0 10px;
-}
-
-/* Texto inferior */
-#screen-welcome p{
-  margin-top:8px;
-}
-.feed-text{font-size:14px;line-height:1.5;color:#333}
-.feed-time{font-size:12px;color:var(--muted);margin-top:3px}
+.feed-avatar{width:34px;height:34px;border-radius:50%;background:var(--btngreen);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.feed-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:999px;font-weight:700;margin-left:4px;background:var(--btngreen);color:#3a7a1a}
+.vibe-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.vibe-btn.on{background:var(--btngreen);border-color:#aad06a}
+.premio-guardado{display:none;font-size:13px;color:#3a7a1a;font-weight:600;text-align:center;margin-top:8px}
+.freebie-card{margin:12px 16px;background:var(--btngreen);border-radius:var(--radius);padding:18px}
+.social-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-decoration:none}
 </style>
 </head>
 <body>
 <div class="app">
 
-  <!-- ══ PANTALLA BIENVENIDA ══ -->
-  <div id="screen-welcome" class="screen active">
-    <div class="logo-header">
-      <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-img" alt="GoFlow">
-      <div class="greeting" id="greeting-text">Buenas tardes ¡Hola! 👋</div>
-      <div class="greeting-sub">Cada día es diferente. Tu plan también.<br>Cuéntame cómo estás y te ayudo a empezar.</div>
-    </div>
-    <button class="btn-dark" onclick="startCheckin()">Empezar ✨</button>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:8px;cursor:pointer" onclick="showNav('tools')">o ir a las herramientas →</p>
+<!-- ══ INICIO ══ -->
+<div id="s-welcome" class="screen screen-full active">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center">
+    <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:80px;height:80px;margin-bottom:24px" alt="GoFlow">
+    <div style="font-size:28px;font-weight:700;margin-bottom:10px" id="greeting-text">¡Buenas noches! 🌙</div>
+    <div style="font-size:14px;color:var(--muted);line-height:1.6;max-width:280px;margin-bottom:32px">Cada día es diferente. Tu plan también.<br>Cuéntame cómo estás y te ayudo a empezar.</div>
+    <button class="btn-dark" onclick="go('s-energy')" style="width:100%;margin:0 0 12px">Empezar ✨</button>
+    <button class="btn-ghost" onclick="go('s-timer')" style="width:100%;margin:0">Ir al timer →</button>
   </div>
+</div>
 
-  <!-- ══ CHECK-IN PASO 1: ENERGÍA ══ -->
-  <div id="screen-energy" class="screen">
-    <div class="logo-header" style="padding-bottom:8px">
-      <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-img" alt="GoFlow" style="width:44px;height:44px;margin-bottom:12px">
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-dot active"></div>
-      <div class="progress-dot"></div>
-      <div class="progress-dot"></div>
-    </div>
-    <div class="card">
-      <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo está tu energía hoy?</h2>
-      <div class="slider-wrap">
-        <div class="slider-label-row">
-          <span class="slider-label">⚡ Energía</span>
-          <span class="slider-value" id="val-energy">5</span>
-        </div>
-        <input type="range" id="slider-energy" min="0" max="10" value="5" oninput="updateRange('energy',this.value)">
-        <div class="slider-hint" id="hint-energy">5 — Punto medio</div>
-      </div>
-    </div>
-    <button class="btn-dark" onclick="goStep(2)">Siguiente</button>
+<!-- ══ CHECK-IN 1: ENERGÍA ══ -->
+<div id="s-energy" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
+  <div class="progress-wrap">
+    <div class="progress-dot active"></div>
+    <div class="progress-dot"></div>
+    <div class="progress-dot"></div>
   </div>
-
-  <!-- ══ CHECK-IN PASO 2: SENSORIAL ══ -->
-  <div id="screen-sensory" class="screen">
-    <div class="logo-header" style="padding-bottom:8px">
-      <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-img" alt="GoFlow" style="width:44px;height:44px;margin-bottom:12px">
+  <div class="card">
+    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo está tu energía hoy?</h2>
+    <div class="slider-label-row">
+      <span class="slider-label">⚡ Energía</span>
+      <span class="slider-value" id="val-e">5</span>
     </div>
-    <div class="progress-wrap">
-      <div class="progress-dot active"></div>
-      <div class="progress-dot active"></div>
-      <div class="progress-dot"></div>
-    </div>
-    <div class="card">
-      <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo te sientes sensorialmente?</h2>
-      <div class="slider-wrap">
-        <div class="slider-label-row">
-          <span class="slider-label">🌿 Comodidad sensorial</span>
-          <span class="slider-value" id="val-sensory">5</span>
-        </div>
-        <input type="range" id="slider-sensory" min="0" max="10" value="5" oninput="updateRange('sensory',this.value)">
-        <div class="slider-hint" id="hint-sensory">5 — Manejable</div>
-      </div>
-    </div>
-    <div class="btn-row">
-      <button class="btn-ghost" onclick="goStep(1)">Atrás</button>
-      <button class="btn-dark" onclick="goStep(3)">Siguiente</button>
-    </div>
+    <input type="range" id="sl-e" min="0" max="10" value="5" oninput="slUpdate('e',this.value)">
+    <div class="slider-hint" id="hint-e">5 — Punto medio</div>
   </div>
+  <div style="flex:1"></div>
+  <button class="btn-dark" onclick="go('s-sensory')">Siguiente</button>
+</div>
 
-  <!-- ══ CHECK-IN PASO 3: FOCO ══ -->
-  <div id="screen-focus" class="screen">
-    <div class="logo-header" style="padding-bottom:8px">
-      <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-img" alt="GoFlow" style="width:44px;height:44px;margin-bottom:12px">
+<!-- ══ CHECK-IN 2: SENSORIAL ══ -->
+<div id="s-sensory" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
+  <div class="progress-wrap">
+    <div class="progress-dot active"></div>
+    <div class="progress-dot active"></div>
+    <div class="progress-dot"></div>
+  </div>
+  <div class="card">
+    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo te sientes sensorialmente?</h2>
+    <div class="slider-label-row">
+      <span class="slider-label">🌿 Sensorial</span>
+      <span class="slider-value" id="val-s">5</span>
     </div>
-    <div class="progress-wrap">
-      <div class="progress-dot active"></div>
-      <div class="progress-dot active"></div>
-      <div class="progress-dot active"></div>
+    <input type="range" id="sl-s" min="0" max="10" value="5" oninput="slUpdate('s',this.value)">
+    <div class="slider-hint" id="hint-s">5 — Manejable</div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="btn-row">
+    <button class="btn-ghost" onclick="go('s-energy')">Atrás</button>
+    <button class="btn-dark" onclick="go('s-focus')">Siguiente</button>
+  </div>
+</div>
+
+<!-- ══ CHECK-IN 3: FOCO ══ -->
+<div id="s-focus" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
+  <div class="progress-wrap">
+    <div class="progress-dot active"></div>
+    <div class="progress-dot active"></div>
+    <div class="progress-dot active"></div>
+  </div>
+  <div class="card">
+    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Qué tal el foco hoy?</h2>
+    <div class="slider-label-row">
+      <span class="slider-label">🎯 Foco</span>
+      <span class="slider-value" id="val-f">5</span>
     </div>
-    <div class="card">
-      <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Qué tal el foco hoy?</h2>
-      <div class="slider-wrap" style="margin-bottom:20px">
-        <div class="slider-label-row">
-          <span class="slider-label">🎯 Foco</span>
-          <span class="slider-value" id="val-focus">5</span>
-        </div>
-        <input type="range" id="slider-focus" min="0" max="10" value="5" oninput="updateRange('focus',this.value)">
-        <div class="slider-hint" id="hint-focus">5 — Más o menos</div>
-      </div>
-      <div>
-        <div class="task-label">🚀 Tu tarea principal de hoy</div>
-        <input type="text" id="task-input" class="task-input" placeholder="Ej: escribir el informe, responder emails...">
-        <div class="task-hint">Opcional — la sugerencia será sobre cómo abordarla.</div>
-      </div>
-    </div>
-    <div class="btn-row">
-      <button class="btn-ghost" onclick="goStep(2)">Atrás</button>
-      <button class="btn-dark" onclick="obtenerSugerencia()">Obtener sugerencia</button>
+    <input type="range" id="sl-f" min="0" max="10" value="5" oninput="slUpdate('f',this.value)">
+    <div class="slider-hint" id="hint-f">5 — Más o menos</div>
+    <div style="margin-top:16px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:8px">🚀 Tarea principal de hoy</div>
+      <input type="text" id="task-main" class="task-input" placeholder="Ej: responder emails, diseñar...">
+      <div class="task-hint">Opcional — la sugerencia será sobre cómo abordarla.</div>
     </div>
   </div>
+  <div style="flex:1"></div>
+  <div class="btn-row">
+    <button class="btn-ghost" onclick="go('s-sensory')">Atrás</button>
+    <button class="btn-dark" onclick="getSugerencia()">Obtener sugerencia</button>
+  </div>
+</div>
 
-  <!-- ══ SUGERENCIA ══ -->
-  <div id="screen-tip" class="screen">
-    <div class="logo-header" style="padding-bottom:16px">
-      <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-img" alt="GoFlow" style="width:44px;height:44px;margin-bottom:12px">
-    </div>
-    <div class="tip-box" id="tip-box" style="display:block">
-      <span id="tip-text" class="tip-loading">Consultando con la IA... 🧠</span>
-    </div>
-    <button class="btn-dark" onclick="showNav('timer')">¡Vamos! ✨</button>
-    <button class="btn-light" onclick="activarTimer()">⏱ Activar timer</button>
-    <button class="btn-ghost" onclick="sugerenciaMasSuave()">No puedo ahora, algo más suave</button>
-    <button class="btn-ghost" onclick="necesitoDescansar()">🔋 Necesito descansar primero</button>
-    <div id="tip-nocturno" style="display:none;margin:0 16px;padding:18px 20px;background:#f0f0f0;border-radius:var(--radius);text-align:center;font-size:14px;line-height:1.6">
-      <div style="font-size:28px;margin-bottom:8px">🌙</div>
-      <div style="font-weight:700;font-size:16px;margin-bottom:6px">Es hora de cerrar el día</div>
-      <div id="tip-nocturno-text"></div>
+<!-- ══ SUGERENCIA ══ -->
+<div id="s-tip" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:16px 0">
+    <div class="tip-box" id="tip-box">
+      <span id="tip-text" style="color:var(--muted);font-style:italic">Consultando con la IA... 🧠</span>
     </div>
   </div>
+  <button class="btn-dark" onclick="go('s-timer')">¡Vamos! ✨</button>
+  <button class="btn-ghost" onclick="tipMasSuave()">No puedo ahora, algo más suave</button>
+  <button class="btn-ghost" onclick="tipDescanso()">🔋 Necesito descansar primero</button>
+  <div id="tip-noche" style="display:none;margin:0 16px 12px;padding:18px;background:#f0f0f0;border-radius:var(--radius);text-align:center">
+    <div style="font-size:28px;margin-bottom:8px">🌙</div>
+    <div style="font-weight:700;font-size:16px;margin-bottom:6px">Es hora de cerrar el día</div>
+    <div id="tip-noche-txt" style="font-size:13px;color:var(--muted);line-height:1.5"></div>
+  </div>
+</div>
 
-  <!-- ══ TIMER (NAV) ══ -->
-  <div id="screen-timer" class="screen">
-    <div style="height:24px"></div>
-    <div class="timer-wrap">
-      <div class="duration-row">
-        <button class="dur-btn" onclick="setDuration(5,'d5')" id="d5">5 min</button>
-        <button class="dur-btn selected" onclick="setDuration(25,'d25')" id="d25">25 min</button>
-        <button class="dur-btn" onclick="setDuration(45,'d45')" id="d45">45 min</button>
-        <button class="dur-btn" onclick="setDuration(10,'d10')" id="d10">10 min</button>
-      </div>
-      <div class="timer-circle">
-        <svg width="180" height="180">
-          <circle cx="90" cy="90" r="78" fill="none" stroke="#e8e8e4" stroke-width="8"/>
-          <circle id="timer-arc" cx="90" cy="90" r="78" fill="none" stroke="#111" stroke-width="8"
-            stroke-dasharray="490" stroke-dashoffset="0" stroke-linecap="round"/>
-        </svg>
-        <div class="timer-center">
-          <div class="timer-time" id="timer-display">25:00</div>
-          <div class="timer-status" id="timer-status">Listo</div>
-        </div>
-      </div>
-      <div class="timer-task" id="timer-task"></div>
+<!-- ══ TIMER ══ -->
+<div id="s-timer" class="screen screen-full">
+  <div class="timer-screen-inner">
+    <div class="dur-row">
+      <button class="dur-btn" onclick="setDur(5,'b5')" id="b5">5 min</button>
+      <button class="dur-btn on" onclick="setDur(25,'b25')" id="b25">25 min</button>
+      <button class="dur-btn" onclick="setDur(45,'b45')" id="b45">45 min</button>
+      <button class="dur-btn" onclick="setDur(10,'b10')" id="b10">10 min</button>
     </div>
-    <button class="btn-dark" id="timer-btn" onclick="toggleTimer()">Iniciar</button>
-    <button class="btn-ghost" onclick="resetTimer()">Reset</button>
-
-    <!-- VICTORIA -->
-    <div id="victoria-wrap" class="victoria-wrap">
-      <img src="https://storage.mlcdn.com/account_image/2135579/7oqKJSOMnqSLBXqqXIjp5vdWdpIWPRyxhhZp2VgW.png" class="victoria-cat" alt="victoria">
-      <div class="victoria-title" id="victoria-titulo">¡Lo conseguiste! 🎉</div>
-      <div class="victoria-sub" id="victoria-sub">Sesión completada. Eso cuenta.</div>
-      <div class="premio-wrap" style="padding:0 0">
-        <p style="font-size:13px;font-weight:700;margin-bottom:8px;text-align:center">¿Cómo vas a premiarte? 🎁</p>
-        <input type="text" id="premio-input" class="premio-input" placeholder="Un café, 10 min de TikTok, una galleta…">
-        <button class="btn-dark" id="guardar-premio" onclick="guardarPremio()" style="width:100%;margin:0">¡Me lo merezco! ✨</button>
-        <div class="premio-guardado" id="premio-guardado"></div>
+    <div class="timer-circle">
+      <svg width="200" height="200">
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#e8e8e4" stroke-width="8"/>
+        <circle id="t-arc" cx="100" cy="100" r="88" fill="none" stroke="#111" stroke-width="8"
+          stroke-dasharray="553" stroke-dashoffset="0" stroke-linecap="round"
+          style="transition:stroke-dashoffset .5s linear"/>
+      </svg>
+      <div class="timer-center">
+        <div class="timer-time" id="t-display">25:00</div>
+        <div class="timer-status" id="t-status">Listo</div>
       </div>
+    </div>
+    <div class="timer-task-label" id="t-task"></div>
+  </div>
+  <button class="btn-dark" id="t-btn" onclick="toggleTimer()">Iniciar</button>
+  <button class="btn-ghost" onclick="resetTimer()">Reset</button>
+</div>
+
+<!-- ══ VICTORIA ══ -->
+<div id="s-victoria" class="screen screen-full">
+  <div class="victoria-inner">
+    <img src="https://storage.mlcdn.com/account_image/2135579/7oqKJSOMnqSLBXqqXIjp5vdWdpIWPRyxhhZp2VgW.png" class="victoria-cat" alt="victoria">
+    <div style="font-size:24px;font-weight:700;margin-bottom:6px" id="v-titulo">¡Lo conseguiste! 🎉</div>
+    <div style="font-size:14px;color:var(--muted);margin-bottom:24px" id="v-sub">Sesión completada. Eso cuenta.</div>
+    <p style="font-size:13px;font-weight:700;margin-bottom:10px">¿Cómo vas a premiarte? 🎁</p>
+    <input type="text" id="v-premio" class="task-input" placeholder="Un café, 10 min de TikTok, una galleta…" style="margin-bottom:10px">
+    <button class="btn-dark" id="v-guardar" onclick="guardarPremio()" style="width:100%;margin:0 0 8px">¡Me lo merezco! ✨</button>
+    <div class="premio-guardado" id="v-guardado"></div>
+    <button class="btn-ghost" onclick="go('s-timer')" style="width:100%;margin-top:10px">Volver al timer</button>
+  </div>
+</div>
+
+<!-- ══ TOOLS ══ -->
+<div id="s-tools" class="screen" style="padding-top:20px">
+  <div class="section-title">El primer paso para arrancar</div>
+  <div class="card">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">No hace falta saber todo el camino. Solo el primer paso.</p>
+    <input type="text" id="big-task" class="task-input" placeholder="¿Qué estás evitando hacer?" style="margin-bottom:10px">
+    <button class="btn-ghost" onclick="breakTask()" style="width:100%;margin:0">Dame el primer paso</button>
+    <div id="task-steps" style="margin-top:12px"></div>
+  </div>
+  <div class="section-title">¿Cómo te sientes ahora?</div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px">
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Hiperfocusing</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Energía baja</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Ansiosa pero aquí</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Regulada</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Stimming</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Simplemente existiendo</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Función ejecutiva: off</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Con máscara puesta</button>
+  </div>
+  <div class="section-title">Recordatorio</div>
+  <div style="padding:0 16px 16px">
+    <div id="reminder-box" class="reminder" style="text-align:center;font-size:15px;transition:opacity .4s">No tienes que hacerlo perfecto. Hecho > perfecto.</div>
+  </div>
+</div>
+
+<!-- ══ RECURSOS ══ -->
+<div id="s-recursos" class="screen" style="overflow-y:auto;padding-top:20px">
+  <div style="height:20px"></div>
+  <div class="section-title" style="text-align:center">Planners y guías TDAH</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 16px 12px">
+    <a href="https://payhip.com/Nat2GoStudio" target="_blank" style="display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-decoration:none;color:var(--text);text-align:center">
+      <span style="font-size:28px;margin-bottom:6px">💰</span>
+      <span style="font-size:12px;font-weight:700;line-height:1.3">Money Mindset</span>
+    </a>
+    <a href="https://payhip.com/Nat2GoStudio" target="_blank" style="display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-decoration:none;color:var(--text);text-align:center">
+      <span style="font-size:28px;margin-bottom:6px">⏱</span>
+      <span style="font-size:12px;font-weight:700;line-height:1.3">Brain Tamer</span>
+    </a>
+    <a href="https://payhip.com/Nat2GoStudio" target="_blank" style="display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-decoration:none;color:var(--text);text-align:center">
+      <span style="font-size:28px;margin-bottom:6px">🥦</span>
+      <span style="font-size:12px;font-weight:700;line-height:1.3">Cook &amp; Calm</span>
+    </a>
+  </div>
+  <div class="freebie-card">
+    <div style="font-size:20px;margin-bottom:6px">🎁</div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:4px">Kit de supervivencia — gratis</div>
+    <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.5">Lo que me hubiera gustado tener cuando me diagnosticaron. 7 páginas para TDAH adulto.</div>
+    <button class="btn-dark" onclick="window.open('https://nat2go.lemonsqueezy.com/','_blank')" style="width:100%;margin:0">Descarga gratis →</button>
+  </div>
+  <div class="section-title">Sígueme</div>
+  <div style="display:flex;gap:8px;padding:0 16px 24px;flex-wrap:wrap">
+    <a href="https://www.instagram.com/natigolaszewski" target="_blank" class="social-btn">@natigolaszewski</a>
+    <a href="https://www.instagram.com/nat2go.studio" target="_blank" class="social-btn">@nat2go.studio</a>
+  </div>
+</div>
+
+<!-- ══ COMUNIDAD ══ -->
+<div id="s-comunidad" class="screen" style="overflow-y:auto;padding-top:20px">
+  <div class="section-title">Comparte una vivencia</div>
+  <div class="card">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Victorias, dificultades, descubrimientos — todo es bienvenido.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <button class="tag-btn" id="tag-win" onclick="toggleTag('win')">Victoria</button>
+      <button class="tag-btn" id="tag-struggle" onclick="toggleTag('struggle')">Dificultad</button>
+      <button class="tag-btn" id="tag-discovery" onclick="toggleTag('discovery')">Descubrimiento</button>
+      <button class="tag-btn" id="tag-rant" onclick="toggleTag('rant')">Desahogo</button>
+      <button class="tag-btn" id="tag-question" onclick="toggleTag('question')">Pregunta</button>
+    </div>
+    <textarea id="exp-text" class="task-input" rows="3" placeholder="¿Qué tienes en mente?" style="margin-bottom:10px"></textarea>
+    <div style="display:flex;gap:8px">
+      <input type="text" id="exp-name" class="task-input" placeholder="Nombre o anónimo" style="flex:1">
+      <button class="btn-dark" onclick="postExp()" style="width:auto;margin:0;padding:12px 18px">Compartir</button>
     </div>
   </div>
-
-  <!-- ══ HERRAMIENTAS (NAV) ══ -->
-  <div id="screen-tools" class="screen">
-    <div style="height:20px"></div>
-
-    <!-- PRIMER PASO -->
-    <div class="section-title">El primer paso para arrancar</div>
-    <div class="card">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">No hace falta saber todo el camino. Solo el primer paso.</p>
-      <input type="text" id="big-task" class="task-input" placeholder="¿Qué estás evitando hacer?" style="margin-bottom:10px">
-      <button class="btn-ghost" onclick="breakTask()" style="width:100%;margin:0">Dame el primer paso</button>
-      <div id="task-steps" class="steps-wrap"></div>
+  <div id="exp-feed" style="padding:0 16px 16px">
+    <div class="feed-entry">
+      <div class="feed-avatar">S</div>
+      <div><div style="font-size:13px;font-weight:700;margin-bottom:2px">Sam <span class="feed-pill">Victoria</span></div>
+      <div style="font-size:14px;line-height:1.5">Por fin contesté ese email que llevaba 3 semanas ahí. Pequeño pero real.</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:3px">Ahora mismo</div></div>
     </div>
-
-    <!-- CHECK-IN RÁPIDO -->
-    <div class="section-title">Check-in rápido</div>
-    <div class="card" style="padding-bottom:16px">
-      <div class="slider-wrap" style="margin-bottom:16px">
-        <div class="slider-label-row">
-          <span class="slider-label">⚡ Energía</span>
-          <span class="slider-value" id="val-energy2">5</span>
-        </div>
-        <input type="range" id="slider-energy2" min="0" max="10" value="5" oninput="updateRange2('energy2',this.value)">
-      </div>
-      <div class="slider-wrap" style="margin-bottom:16px">
-        <div class="slider-label-row">
-          <span class="slider-label">🌿 Sensorial</span>
-          <span class="slider-value" id="val-sensory2">5</span>
-        </div>
-        <input type="range" id="slider-sensory2" min="0" max="10" value="5" oninput="updateRange2('sensory2',this.value)">
-      </div>
-      <div class="slider-wrap" style="margin-bottom:14px">
-        <div class="slider-label-row">
-          <span class="slider-label">🎯 Foco</span>
-          <span class="slider-value" id="val-focus2">5</span>
-        </div>
-        <input type="range" id="slider-focus2" min="0" max="10" value="5" oninput="updateRange2('focus2',this.value)">
-      </div>
-      <div id="checkin-tip2" style="display:none;padding:14px;background:var(--btn-light);border-radius:var(--radius-sm);font-size:13px;line-height:1.5;margin-bottom:10px"></div>
-      <button class="btn-ghost" onclick="getCheckinTip2()" style="width:100%;margin:0">Obtener sugerencia</button>
-    </div>
-
-    <!-- RECORDATORIOS -->
-    <div class="section-title">Recordatorios</div>
-    <div style="padding:0 16px 16px">
-      <div class="reminder">No tienes que hacerlo perfecto. Hecho > perfecto.</div>
-      <div class="reminder">Enmascararse agota. Aquí no tienes que hacerlo.</div>
-      <div class="reminder">Tu cerebro funciona diferente — no menos.</div>
-      <div class="reminder">Un inicio de 5 minutos cuenta. Aparecer cuenta.</div>
-    </div>
-
-    <!-- ESTADO EMOCIONAL -->
-    <div class="section-title">¿Cómo te sientes ahora?</div>
-    <div class="vibe-grid" style="margin-bottom:20px">
-      <button class="vibe-btn" onclick="selectVibe(this)">Hiperfocusing</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Energía baja</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Ansiosa pero aquí</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Regulada</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Stimming</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Simplemente existiendo</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Función ejecutiva: off</button>
-      <button class="vibe-btn" onclick="selectVibe(this)">Con máscara puesta</button>
+    <div class="feed-entry">
+      <div class="feed-avatar">A</div>
+      <div><div style="font-size:13px;font-weight:700;margin-bottom:2px">Anónimo <span class="feed-pill">Descubrimiento</span></div>
+      <div style="font-size:14px;line-height:1.5">¿El body doubling funciona para mí?? 40 min y conseguí cosas.</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:3px">Hace 12 min</div></div>
     </div>
   </div>
+</div>
 
-  <!-- ══ RECURSOS (NAV) ══ -->
-  <div id="screen-recursos" class="screen">
-    <div style="height:20px"></div>
-    <div class="section-title">Planners y guías TDAH</div>
-    <div class="card">
-      <div class="planner-item">
-        <span class="planner-emoji">💰</span>
-        <div class="planner-info">
-          <div class="planner-name">Money Mindset</div>
-          <div class="planner-desc">Gestión financiera para cerebros con TDAH</div>
-        </div>
-        <span class="planner-price">€12</span>
-      </div>
-      <div class="planner-item">
-        <span class="planner-emoji">⏱</span>
-        <div class="planner-info">
-          <div class="planner-name">Brain Tamer</div>
-          <div class="planner-desc">Domina tu tiempo sin quemar tu cerebro</div>
-        </div>
-        <span class="planner-price">€12</span>
-      </div>
-      <div class="planner-item">
-        <span class="planner-emoji">🥦</span>
-        <div class="planner-info">
-          <div class="planner-name">Cook & Calm</div>
-          <div class="planner-desc">Organización de cocina para mentes con TDAH</div>
-        </div>
-        <span class="planner-price">€12</span>
-      </div>
-    </div>
-    <button class="btn-dark" onclick="window.open('https://payhip.com/Nat2GoStudio','_blank')">Ver todos los planners →</button>
-
-    <div class="freebie-card">
-      <div style="font-size:22px;margin-bottom:8px">🎁</div>
-      <div class="freebie-title">Kit de supervivencia — gratis</div>
-      <div class="freebie-desc">Lo que me hubiera gustado tener cuando me diagnosticaron. 7 páginas para TDAH adulto recién diagnosticada.</div>
-      <button class="btn-dark" onclick="window.open('https://nat2go.lemonsqueezy.com/','_blank')" style="width:100%;margin:0">Descarga gratis →</button>
-    </div>
-
-    <div class="section-title">Sígueme</div>
-    <div class="social-row" style="margin-bottom:20px">
-      <a href="https://www.instagram.com/natigolaszewski" target="_blank" class="social-btn">@natigolaszewski</a>
-      <a href="https://www.instagram.com/nat2go.studio" target="_blank" class="social-btn">@nat2go.studio</a>
-    </div>
-  </div>
-
-  <!-- ══ VIVENCIAS (NAV) ══ -->
-  <div id="screen-vivencias" class="screen">
-    <div style="height:20px"></div>
-    <div class="section-title">Comparte una vivencia</div>
-    <div class="card">
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Victorias, dificultades, descubrimientos — todo es bienvenido.</p>
-      <div class="tag-row">
-        <button class="tag-btn" id="tag-win" onclick="toggleTag('win')">Victoria</button>
-        <button class="tag-btn" id="tag-struggle" onclick="toggleTag('struggle')">Dificultad</button>
-        <button class="tag-btn" id="tag-discovery" onclick="toggleTag('discovery')">Descubrimiento</button>
-        <button class="tag-btn" id="tag-rant" onclick="toggleTag('rant')">Desahogo</button>
-        <button class="tag-btn" id="tag-question" onclick="toggleTag('question')">Pregunta</button>
-      </div>
-      <textarea id="exp-text" class="task-input" rows="3" placeholder="¿Qué tienes en mente?" style="margin-bottom:10px"></textarea>
-      <div style="display:flex;gap:8px">
-        <input type="text" id="exp-name" class="task-input" placeholder="Nombre o anónimo" style="flex:1">
-        <button class="btn-dark" onclick="postExperience()" style="width:auto;margin:0;padding:12px 20px">Compartir</button>
-      </div>
-    </div>
-    <div id="exp-feed" style="padding:0 16px">
-      <div class="feed-entry">
-        <div class="feed-avatar">S</div>
-        <div>
-          <div class="feed-name">Sam <span class="feed-pill" style="background:#e4fdbf;color:#3a7a1a">Victoria</span></div>
-          <div class="feed-text">Por fin contesté ese email que llevaba 3 semanas ahí. Pequeño pero real.</div>
-          <div class="feed-time">Ahora mismo</div>
-        </div>
-      </div>
-      <div class="feed-entry">
-        <div class="feed-avatar">A</div>
-        <div>
-          <div class="feed-name">Anónimo <span class="feed-pill" style="background:#e4fdbf;color:#3a7a1a">Descubrimiento</span></div>
-          <div class="feed-text">¿El body doubling funciona para mí?? 40 min y conseguí cosas. Primera vez en semanas.</div>
-          <div class="feed-time">Hace 12 min</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ NAV BAR ══ -->
-  <nav class="nav">
-    <button class="nav-btn" id="nav-checkin" onclick="showNav('welcome')">
-      <span class="nav-icon">🏠</span>
-      <span>Inicio</span>
-    </button>
-    <button class="nav-btn active" id="nav-timer" onclick="showNav('timer')">
-      <span class="nav-icon">⏱</span>
-      <span>Timer</span>
-    </button>
-    <button class="nav-btn" id="nav-tools" onclick="showNav('tools')">
-      <span class="nav-icon">🧰</span>
-      <span>Tools</span>
-    </button>
-    <button class="nav-btn" id="nav-recursos" onclick="showNav('recursos')">
-      <span class="nav-icon">📓</span>
-      <span>Recursos</span>
-    </button>
-    <button class="nav-btn" id="nav-vivencias" onclick="showNav('vivencias')">
-      <span class="nav-icon">💬</span>
-      <span>Vivencias</span>
-    </button>
-  </nav>
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <button class="nav-btn active" id="nav-welcome" onclick="navGo('s-welcome','nav-welcome')">
+    <span class="nav-icon">🏠</span><span>Inicio</span>
+  </button>
+  <button class="nav-btn" id="nav-timer" onclick="navGo('s-timer','nav-timer')">
+    <span class="nav-icon">⏱</span><span>Timer</span>
+  </button>
+  <button class="nav-btn" id="nav-tools" onclick="navGo('s-tools','nav-tools')">
+    <span class="nav-icon">🧰</span><span>Tools</span>
+  </button>
+  <button class="nav-btn" id="nav-recursos" onclick="navGo('s-recursos','nav-recursos')">
+    <span class="nav-icon">📓</span><span>Recursos</span>
+  </button>
+  <button class="nav-btn" id="nav-comunidad" onclick="navGo('s-comunidad','nav-comunidad')">
+    <span class="nav-icon">🫂</span><span>Comunidad</span>
+  </button>
+</nav>
 
 </div>
 
@@ -914,179 +379,150 @@ textarea.task-input{resize:none;min-height:80px}
 (function(){
   const h=new Date().getHours();
   const g=document.getElementById('greeting-text');
-  if(h<12)g.textContent='¡Buenos días! 👋';
-  else if(h<20)g.textContent='¡Buenas tardes! 👋';
-  else g.textContent='¡Buenas noches! 🌙';
+  if(g){
+    if(h<12)g.textContent='¡Buenos días! 👋';
+    else if(h<20)g.textContent='¡Buenas tardes! 👋';
+    else g.textContent='¡Buenas noches! 🌙';
+  }
 })();
 
-// ── NAV ──
-function showNav(name){
-  const screens=['welcome','energy','sensory','focus','tip','timer','tools','recursos','vivencias'];
-  screens.forEach(s=>document.getElementById('screen-'+s).classList.remove('active'));
-  document.getElementById('screen-'+name).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const navMap={welcome:'nav-checkin',timer:'nav-timer',tools:'nav-tools',recursos:'nav-recursos',vivencias:'nav-vivencias'};
-  if(navMap[name])document.getElementById(navMap[name]).classList.add('active');
+// ── NAVIGATION ──
+const ALL_SCREENS=['s-welcome','s-energy','s-sensory','s-focus','s-tip','s-timer','s-victoria','s-tools','s-recursos','s-comunidad'];
+
+function go(id){
+  ALL_SCREENS.forEach(s=>{
+    const el=document.getElementById(s);
+    if(el){el.classList.remove('active');}
+  });
+  const target=document.getElementById(id);
+  if(target){target.classList.add('active');}
   window.scrollTo(0,0);
 }
 
-// ── CHECK-IN FLOW ──
-function startCheckin(){
-  showScreen('energy');
-}
-function showScreen(name){
-  const screens=['welcome','energy','sensory','focus','tip','timer','tools','recursos','vivencias'];
-  screens.forEach(s=>document.getElementById('screen-'+s).classList.remove('active'));
-  document.getElementById('screen-'+name).classList.add('active');
-  window.scrollTo(0,0);
-}
-function goStep(step){
-  if(step===1)showScreen('energy');
-  else if(step===2)showScreen('sensory');
-  else if(step===3)showScreen('focus');
+function navGo(screenId, navId){
+  go(screenId);
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(navId).classList.add('active');
 }
 
 // ── SLIDERS ──
-const hints={
-  energy:{0:'0 — Vacía',3:'3 — Baja',5:'5 — Punto medio',7:'7 — Bastante bien',10:'10 — A tope'},
-  sensory:{0:'0 — Sobrecargada',3:'3 — Incómoda',5:'5 — Manejable',7:'7 — Ok',10:'10 — Perfecta'},
-  focus:{0:'0 — Imposible',3:'3 — Difícil',5:'5 — Más o menos',7:'7 — Fluyendo',10:'10 — Hiperfoco'}
+const sliderHints={
+  e:{0:'0 — Vacía',3:'3 — Baja',5:'5 — Punto medio',7:'7 — Bastante bien',10:'10 — A tope'},
+  s:{0:'0 — Sobrecargada',3:'3 — Incómoda',5:'5 — Manejable',7:'7 — Ok',10:'10 — Perfecta'},
+  f:{0:'0 — Imposible',3:'3 — Difícil',5:'5 — Más o menos',7:'7 — Fluyendo',10:'10 — Hiperfoco'}
 };
-function getHint(type,v){
-  const h=hints[type];
-  const keys=Object.keys(h).map(Number).sort((a,b)=>a-b);
-  let best=keys[0];
-  for(const k of keys){if(v>=k)best=k;}
-  return h[best];
-}
-function updateRange(type,val){
-  const v=parseInt(val);
-  const id=type==='energy'?'slider-energy':type==='sensory'?'slider-sensory':'slider-focus';
-  const pct=v/10*100;
-  document.getElementById(id).style.background=`linear-gradient(to right,#c8f57a 0%,#c8f57a ${pct}%,#e8e8e4 ${pct}%,#e8e8e4 100%)`;
-  document.getElementById('val-'+type).textContent=v;
-  if(document.getElementById('hint-'+type))
-    document.getElementById('hint-'+type).textContent=getHint(type,v);
-}
-function updateRange2(id,val){
+
+function slUpdate(key, val){
   const v=parseInt(val);
   const pct=v/10*100;
-  document.getElementById('slider-'+id).style.background=`linear-gradient(to right,#c8f57a 0%,#c8f57a ${pct}%,#e8e8e4 ${pct}%,#e8e8e4 100%)`;
-  document.getElementById('val-'+id).textContent=v;
+  const sl=document.getElementById('sl-'+key);
+  if(sl)sl.style.background=`linear-gradient(to right,#c8f57a 0%,#c8f57a ${pct}%,#e8e8e4 ${pct}%,#e8e8e4 100%)`;
+  const vEl=document.getElementById('val-'+key);
+  if(vEl)vEl.textContent=v;
+  const hEl=document.getElementById('hint-'+key);
+  if(hEl){
+    const hints=sliderHints[key];
+    const keys=Object.keys(hints).map(Number).sort((a,b)=>a-b);
+    let best=keys[0];
+    for(const k of keys){if(v>=k)best=k;}
+    hEl.textContent=hints[best];
+  }
 }
 
-// ── TIP INTELIGENTE ──
-function getTipInteligente(e,s,f){
+// ── TIP ──
+function getTipFallback(e,s,f){
   e=parseInt(e);s=parseInt(s);f=parseInt(f);
-  const tarea=document.getElementById('task-input').value||'';
+  const tarea=document.getElementById('task-main')?.value||'';
   const t=tarea?` Para "${tarea}"`:'';
-  if(e<=2&&s<=2&&f<=2)return'Todo en mínimos — hoy el éxito es simplemente existir. No tienes que producir nada. Descansa sin culpa. 💚';
-  if(e<=2)return'Tu energía está muy baja. Antes de cualquier tarea: agua, luz natural y algo de comer. Tu cuerpo primero.';
-  if(s<=2)return'La sobrecarga sensorial es alta. Auriculares, pantalla tenue, espacio tranquilo. Protégete antes de intentar trabajar.';
-  if(f<=2)return'El foco está muy difícil hoy. Prueba solo 5 minutos con una única tarea pequeña.'+t;
-  if(e<=4&&f<=4)return'Energía y foco bajos. Día para tareas suaves.'+t+' — empieza por la parte más pequeña.';
-  if(e>=7&&f>=7)return'¡Buena combinación de energía y foco!'+t+' — aprovecha este momento para la tarea más importante.';
-  if(f>=7)return'¡Estás en flow! Silencia notificaciones y aprovecha esta ventana.'+t;
-  return'Estás en un punto equilibrado. Una sesión de 25 minutos con una tarea concreta suena bien.'+t;
+  if(e<=2&&s<=2&&f<=2)return'Todo en mínimos — hoy el éxito es simplemente existir. Descansa sin culpa. 💚';
+  if(e<=2)return'Tu energía está muy baja. Agua, luz natural y algo de comer primero. Tu cuerpo primero.';
+  if(s<=2)return'Sobrecarga sensorial alta. Auriculares, pantalla tenue, espacio tranquilo.';
+  if(f<=2)return'El foco está difícil hoy. Prueba solo 5 minutos con una cosa pequeña.'+t;
+  if(e<=4&&f<=4)return'Energía y foco bajos. Tareas suaves.'+t+' — empieza por lo más pequeño.';
+  if(e>=7&&f>=7)return'¡Buena combinación!'+t+' — aprovecha este momento para lo más importante.';
+  if(f>=7)return'¡Estás en flow! Silencia notificaciones y aprovecha.'+t;
+  return'Punto equilibrado. Una sesión de 25 minutos con una tarea concreta.'+t;
 }
 
-async function obtenerSugerencia(){
-  const e=document.getElementById('slider-energy').value;
-  const s=document.getElementById('slider-sensory').value;
-  const f=document.getElementById('slider-focus').value;
-  const nombre=document.getElementById('task-input').value||'Anónimo';
+async function getSugerencia(){
+  const e=document.getElementById('sl-e')?.value||5;
+  const s=document.getElementById('sl-s')?.value||5;
+  const f=document.getElementById('sl-f')?.value||5;
+  const nombre=document.getElementById('task-main')?.value||'Anónimo';
   const h=new Date().getHours();
-  showScreen('tip');
+  go('s-tip');
 
-  // Detección nocturna
+  const tipBox=document.getElementById('tip-box');
+  const tipText=document.getElementById('tip-text');
+  const tipNoche=document.getElementById('tip-noche');
+  const buttons=document.querySelectorAll('#s-tip .btn-dark,#s-tip .btn-ghost');
+
   if(h>=22){
-    document.getElementById('tip-box').style.display='none';
-    document.querySelectorAll('#screen-tip .btn-dark, #screen-tip .btn-light, #screen-tip .btn-ghost').forEach(b=>b.style.display='none');
-    const noc=document.getElementById('tip-nocturno');
-    noc.style.display='block';
-    document.getElementById('tip-nocturno-text').textContent=`Son las ${h}:${String(new Date().getMinutes()).padStart(2,'0')}. Tu cerebro ha trabajado suficiente hoy. "${nombre!='Anónimo'?nombre:'tu tarea'}" puede esperar — descansar bien ES productividad.`;
+    tipBox.style.display='none';
+    buttons.forEach(b=>b.style.display='none');
+    tipNoche.style.display='block';
+    document.getElementById('tip-noche-txt').textContent=`Son las ${h}:${String(new Date().getMinutes()).padStart(2,'0')}. Tu cerebro ha trabajado suficiente. "${nombre!='Anónimo'?nombre:'tu tarea'}" puede esperar — descansar ES productividad.`;
     return;
   }
 
-  document.getElementById('tip-box').style.display='block';
-  document.querySelectorAll('#screen-tip .btn-dark, #screen-tip .btn-light, #screen-tip .btn-ghost').forEach(b=>b.style.display='block');
-  document.getElementById('tip-nocturno').style.display='none';
-  document.getElementById('tip-text').textContent='Consultando con la IA... 🧠';
-  document.getElementById('tip-text').className='tip-loading';
+  tipBox.style.display='block';
+  buttons.forEach(b=>b.style.display='block');
+  tipNoche.style.display='none';
+  tipText.textContent='Consultando con la IA... 🧠';
+  tipText.style.color='var(--muted)';
+  tipText.style.fontStyle='italic';
 
   try{
-    const response=await fetch('https://hook.eu1.make.com/rdaco6dwmx92yowgs5t7k2v87u19oa3f',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),energia:e,sensorial:s,foco:f,nombre:nombre})
+    const r=await fetch('https://hook.eu1.make.com/rdaco6dwmx92yowgs5t7k2v87u19oa3f',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),energia:e,sensorial:s,foco:f,nombre})
     });
-    const texto=await response.text();
-    if(texto&&texto.trim().length>5){
-      document.getElementById('tip-text').textContent=texto.trim();
-      document.getElementById('tip-text').className='';
-    }else{
-      document.getElementById('tip-text').textContent=getTipInteligente(e,s,f);
-      document.getElementById('tip-text').className='';
-    }
+    const txt=await r.text();
+    tipText.textContent=txt&&txt.trim().length>5?txt.trim():getTipFallback(e,s,f);
+    tipText.style.color='';tipText.style.fontStyle='';
   }catch(err){
-    document.getElementById('tip-text').textContent=getTipInteligente(e,s,f);
-    document.getElementById('tip-text').className='';
+    tipText.textContent=getTipFallback(e,s,f);
+    tipText.style.color='';tipText.style.fontStyle='';
   }
 }
 
-function activarTimer(){showNav('timer');}
-
-function sugerenciaMasSuave(){
-  const e=document.getElementById('slider-energy').value;
-  const s=document.getElementById('slider-sensory').value;
-  const f=document.getElementById('slider-focus').value;
-  const tips=['Pon un timer de 5 minutos. Solo 5. Después decides si sigues.','¿Cuál es la parte más fácil? Empieza solo por ahí.','Abre el documento o la app — solo ábrelo, nada más.','Bebe agua, respira, y haz una cosa pequeña. Una sola.'];
+function tipMasSuave(){
+  const tips=['Pon un timer de 5 minutos. Solo 5.','¿Cuál es la parte más fácil? Empieza por ahí.','Abre el documento — solo ábrelo, nada más.','Bebe agua, respira, una cosa pequeña. Una sola.'];
   document.getElementById('tip-text').textContent=tips[Math.floor(Math.random()*tips.length)];
+  document.getElementById('tip-text').style.color='';document.getElementById('tip-text').style.fontStyle='';
 }
-
-function necesitoDescansar(){
-  const descansos=['Tómate 10 minutos: agua, luz natural, movimiento suave.','Pon música tranquila y cierra los ojos 5 minutos.','Sal a respirar aire fresco aunque sea 2 minutos.','Estírate, bebe algo y vuelve cuando estés lista.'];
-  document.getElementById('tip-text').textContent=descansos[Math.floor(Math.random()*descansos.length)];
-}
-
-async function getCheckinTip2(){
-  const e=document.getElementById('slider-energy2').value;
-  const s=document.getElementById('slider-sensory2').value;
-  const f=document.getElementById('slider-focus2').value;
-  const tip=document.getElementById('checkin-tip2');
-  tip.style.display='block';
-  tip.textContent='Consultando... 🧠';
-  try{
-    const r=await fetch('https://hook.eu1.make.com/rdaco6dwmx92yowgs5t7k2v87u19oa3f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),energia:e,sensorial:s,foco:f,nombre:'Anónimo'})});
-    const t=await r.text();
-    tip.textContent=t&&t.trim().length>5?t.trim():getTipInteligente(e,s,f);
-  }catch(err){
-    tip.textContent=getTipInteligente(e,s,f);
-  }
+function tipDescanso(){
+  const d=['Tómate 10 min: agua, luz natural, movimiento suave.','Pon música tranquila y cierra los ojos 5 minutos.','Sal a respirar aire fresco aunque sea 2 minutos.'];
+  document.getElementById('tip-text').textContent=d[Math.floor(Math.random()*d.length)];
+  document.getElementById('tip-text').style.color='';document.getElementById('tip-text').style.fontStyle='';
 }
 
 // ── TIMER ──
-let duration=25,remaining=25*60,running=false,interval=null;
-const full=490;
-const victoriaEmojis=['🎉','🌟','✨','🏆','💪','🦋','🌈','🎊'];
-const victoriaMensajes=[['¡Lo conseguiste! 🎉','Sesión completada. Eso cuenta.'],['¡Eres increíble! 🌟','Tu cerebro acaba de hacer algo difícil.'],['¡Victoria! ✨','Pequeña o grande, cuenta igual.'],['¡Boom! 🧠','Una sesión más en el bolsillo.'],['¡Lo hiciste! 💪','El cerebro con TDAH que completa — eso eres tú.']];
+let dur=25,rem=25*60,running=false,tInterval=null;
+const FULL=553;
+const vMsgs=[
+  ['¡Lo conseguiste! 🎉','Sesión completada. Eso cuenta.'],
+  ['¡Eres increíble! 🌟','Tu cerebro acaba de hacer algo difícil.'],
+  ['¡Victoria! ✨','Pequeña o grande, cuenta igual.'],
+  ['¡Boom! 🧠','Una sesión más en el bolsillo.'],
+  ['¡Lo hiciste! 💪','El cerebro con TDAH que completa — eso eres tú.']
+];
 
 function updateTimerDisplay(){
-  const m=Math.floor(remaining/60),s=remaining%60;
-  document.getElementById('timer-display').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
-  const arc=document.getElementById('timer-arc');
-  arc.style.strokeDashoffset=full*(1-remaining/(duration*60));
+  const m=Math.floor(rem/60),s=rem%60;
+  document.getElementById('t-display').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  document.getElementById('t-arc').style.strokeDashoffset=FULL*(1-rem/(dur*60));
 }
 
-function setDuration(m,id){
+function setDur(m,id){
   if(running)return;
-  duration=m;remaining=m*60;
-  document.querySelectorAll('.dur-btn').forEach(b=>b.classList.remove('selected'));
-  document.getElementById(id).classList.add('selected');
+  dur=m;rem=m*60;
+  document.querySelectorAll('.dur-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
   updateTimerDisplay();
 }
 
-function playVictorySound(){
+function playSound(){
   try{
     const ctx=new(window.AudioContext||window.webkitAudioContext)();
     [523.25,659.25,783.99,1046.5].forEach((freq,i)=>{
@@ -1102,118 +538,120 @@ function playVictorySound(){
   }catch(e){}
 }
 
-function mostrarVictoria(){
-  const vw=document.getElementById('victoria-wrap');
-  const idx=Math.floor(Math.random()*victoriaEmojis.length);
-  const midx=Math.floor(Math.random()*victoriaMensajes.length);
-  document.getElementById('victoria-titulo').textContent=victoriaMensajes[midx][0];
-  document.getElementById('victoria-sub').textContent=victoriaMensajes[midx][1];
-  document.getElementById('premio-input').value='';
-  document.getElementById('premio-guardado').style.display='none';
-  document.getElementById('guardar-premio').textContent='¡Me lo merezco! ✨';
-  document.getElementById('guardar-premio').disabled=false;
-  vw.style.display='flex';
-  playVictorySound();
-}
-
-function guardarPremio(){
-  const tarea=document.getElementById('task-input').value||'Sin tarea definida';
-  const premio=document.getElementById('premio-input').value.trim()||'Sin premio';
-  fetch('https://hook.eu1.make.com/2dik4nf9z38bsxi1bhlipzvoggilcgn7',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),tarea,premio,duracion:duration})
-  }).catch(err=>console.log('Victoria:',err));
-  const g=document.getElementById('premio-guardado');
-  g.textContent=premio!='Sin premio'?'¡Anotado! 🎁 '+premio+' — te lo mereces.':'¡Tú misma sabes lo que mereces! 💚';
-  g.style.display='block';
-  document.getElementById('guardar-premio').textContent='¡Disfrutalo! 🌟';
-  document.getElementById('guardar-premio').disabled=true;
-}
-
 function toggleTimer(){
   if(running){
-    clearInterval(interval);running=false;
-    document.getElementById('timer-btn').textContent='Reanudar';
-    document.getElementById('timer-status').textContent='Pausado';
+    clearInterval(tInterval);running=false;
+    document.getElementById('t-btn').textContent='Reanudar';
+    document.getElementById('t-status').textContent='Pausado';
   }else{
-    document.getElementById('victoria-wrap').style.display='none';
-    document.getElementById('guardar-premio').textContent='¡Me lo merezco! ✨';
-    document.getElementById('guardar-premio').disabled=false;
     running=true;
-    document.getElementById('timer-btn').textContent='Pausar';
-    const task=document.getElementById('task-input').value;
-    document.getElementById('timer-task').textContent=task?'Enfocada en: '+task:'';
-    document.getElementById('timer-status').textContent='Enfocando';
-    interval=setInterval(()=>{
-      if(remaining<=0){
-        clearInterval(interval);running=false;
-        document.getElementById('timer-btn').textContent='¡Otra!';
-        document.getElementById('timer-status').textContent='¡Completado!';
-        mostrarVictoria();return;
+    document.getElementById('t-btn').textContent='Pausar';
+    const task=document.getElementById('task-main')?.value||'';
+    document.getElementById('t-task').textContent=task?'Enfocada en: '+task:'';
+    document.getElementById('t-status').textContent='Enfocando';
+    tInterval=setInterval(()=>{
+      if(rem<=0){
+        clearInterval(tInterval);running=false;
+        document.getElementById('t-btn').textContent='¡Otra!';
+        document.getElementById('t-status').textContent='¡Completado!';
+        document.getElementById('t-arc').style.stroke='#c8f57a';
+        playSound();
+        // Ir a pantalla de victoria
+        const idx=Math.floor(Math.random()*vMsgs.length);
+        document.getElementById('v-titulo').textContent=vMsgs[idx][0];
+        document.getElementById('v-sub').textContent=vMsgs[idx][1];
+        document.getElementById('v-premio').value='';
+        document.getElementById('v-guardado').style.display='none';
+        document.getElementById('v-guardar').textContent='¡Me lo merezco! ✨';
+        document.getElementById('v-guardar').disabled=false;
+        setTimeout(()=>go('s-victoria'),800);
+        return;
       }
-      remaining--;updateTimerDisplay();
+      rem--;updateTimerDisplay();
     },1000);
   }
 }
 
 function resetTimer(){
-  clearInterval(interval);running=false;remaining=duration*60;
-  document.getElementById('timer-btn').textContent='Iniciar';
-  document.getElementById('timer-status').textContent='Listo';
-  document.getElementById('timer-task').textContent='';
-  document.getElementById('victoria-wrap').style.display='none';
+  clearInterval(tInterval);running=false;rem=dur*60;
+  document.getElementById('t-btn').textContent='Iniciar';
+  document.getElementById('t-status').textContent='Listo';
+  document.getElementById('t-task').textContent='';
+  document.getElementById('t-arc').style.stroke='#111';
   updateTimerDisplay();
 }
 updateTimerDisplay();
 
+function guardarPremio(){
+  const tarea=document.getElementById('task-main')?.value||'Sin tarea';
+  const premio=document.getElementById('v-premio').value.trim()||'Sin premio';
+  fetch('https://hook.eu1.make.com/2dik4nf9z38bsxi1bhlipzvoggilcgn7',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),tarea,premio,duracion:dur})
+  }).catch(e=>console.log(e));
+  const g=document.getElementById('v-guardado');
+  g.textContent=premio!='Sin premio'?'¡Anotado! 🎁 '+premio+' — te lo mereces.':'¡Tú misma sabes lo que mereces! 💚';
+  g.style.display='block';
+  document.getElementById('v-guardar').textContent='¡Disfrutalo! 🌟';
+  document.getElementById('v-guardar').disabled=true;
+}
+
 // ── PRIMER PASO ──
-const primerPasos=[
-  {intro:'Para empezar con',pasos:['Abre el documento o app — solo ábrelo, nada más.','Míralo 30 segundos sin hacer nada.','Haz UNA cosa pequeña. Solo una.','Celébralo. Ya arrancaste 🎉','Ahora, ¿puedes hacer una más?']},
-  {intro:'Un primer paso para',pasos:['Cierra todo lo que no necesitas ahora mismo.','Bebe un sorbo de agua.','Pon un timer de 5 minutos.','Empieza. Solo 5 minutos.','¿Ves? Ya estás dentro 💚']},
-  {intro:'Para arrancar con',pasos:['¿Cuál es la acción más pequeña posible?','Solo esa. No pienses en el resto.','Hazla. Ahora.','Respira. Ya moviste la primera ficha.','El resto viene solo, de verdad.']}
+const pasos=[
+  {intro:'Para empezar con',p:['Abre el documento o app — solo ábrelo.','Míralo 30 segundos sin hacer nada.','Haz UNA cosa pequeña. Solo una.','Celébralo. Ya arrancaste 🎉','¿Puedes hacer una más?']},
+  {intro:'Un primer paso para',p:['Cierra todo lo que no necesitas.','Bebe un sorbo de agua.','Pon un timer de 5 minutos.','Empieza. Solo 5 minutos.','¿Ves? Ya estás dentro 💚']},
+  {intro:'Para arrancar con',p:['¿Cuál es la acción más pequeña posible?','Solo esa. No pienses en el resto.','Hazla. Ahora.','Respira. Ya moviste la primera ficha.','El resto viene solo, de verdad.']}
 ];
 function breakTask(){
   const t=document.getElementById('big-task').value.trim();
   const c=document.getElementById('task-steps');
-  if(!t){c.innerHTML='<p style="font-size:13px;color:var(--muted);margin-top:10px">Escribe lo que estás evitando arriba.</p>';return;}
-  const s=primerPasos[Math.floor(Math.random()*primerPasos.length)];
-  c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin:14px 0 8px">${s.intro}: <strong>${t}</strong></p>`+
-    s.pasos.map((p,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${p}</div></div>`).join('');
+  if(!t){c.innerHTML='<p style="font-size:13px;color:var(--muted)">Escribe lo que estás evitando arriba.</p>';return;}
+  const s=pasos[Math.floor(Math.random()*pasos.length)];
+  c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:8px">${s.intro}: <strong>${t}</strong></p>`+
+    s.p.map((p,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div style="font-size:14px;line-height:1.5">${p}</div></div>`).join('');
 }
 
-// ── VIBE ──
-function selectVibe(el){
-  document.querySelectorAll('.vibe-btn').forEach(b=>b.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-// ── VIVENCIAS ──
+// ── COMUNIDAD ──
 let selTag='';
 function toggleTag(tag){
-  if(selTag===tag){selTag='';document.getElementById('tag-'+tag).classList.remove('selected');return;}
-  if(selTag)document.getElementById('tag-'+selTag).classList.remove('selected');
-  selTag=tag;
-  document.getElementById('tag-'+tag).classList.add('selected');
+  if(selTag===tag){selTag='';document.getElementById('tag-'+tag).classList.remove('on');return;}
+  if(selTag)document.getElementById('tag-'+selTag).classList.remove('on');
+  selTag=tag;document.getElementById('tag-'+tag).classList.add('on');
 }
-function postExperience(){
+const tagLabels={win:'Victoria',struggle:'Dificultad',discovery:'Descubrimiento',rant:'Desahogo',question:'Pregunta'};
+function postExp(){
   const text=document.getElementById('exp-text').value.trim();
   const name=document.getElementById('exp-name').value.trim()||'Anónimo';
   if(!text)return;
-  const init=name[0].toUpperCase();
-  const tagLabels={win:'Victoria',struggle:'Dificultad',discovery:'Descubrimiento',rant:'Desahogo',question:'Pregunta'};
-  const pill=selTag?`<span class="feed-pill" style="background:#e4fdbf;color:#3a7a1a">${tagLabels[selTag]}</span>`:'';
+  const pill=selTag?`<span class="feed-pill">${tagLabels[selTag]}</span>`:'';
   const div=document.createElement('div');
   div.className='feed-entry';
-  div.innerHTML=`<div class="feed-avatar">${init}</div><div><div class="feed-name">${name} ${pill}</div><div class="feed-text">${text}</div><div class="feed-time">Ahora mismo</div></div>`;
+  div.innerHTML=`<div class="feed-avatar">${name[0].toUpperCase()}</div><div><div style="font-size:13px;font-weight:700;margin-bottom:2px">${name} ${pill}</div><div style="font-size:14px;line-height:1.5">${text}</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Ahora mismo</div></div>`;
   document.getElementById('exp-feed').prepend(div);
   document.getElementById('exp-text').value='';
   document.getElementById('exp-name').value='';
-  selTag='';
-  document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('selected'));
+  selTag='';document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('on'));
 }
-
-// Iniciar en timer
-showNav('timer');
+// ── RECORDATORIOS ROTATIVOS ──
+const reminders=[
+  'No tienes que hacerlo perfecto. Hecho > perfecto.',
+  'Enmascararse agota. Aquí no tienes que hacerlo.',
+  'Tu cerebro funciona diferente — no menos.',
+  'Un inicio de 5 minutos cuenta. Aparecer cuenta.',
+  'Pequeños pasos cuentan. Aparecer cuenta.',
+  'No hay una sola forma correcta de ser productiva.',
+];
+let rIdx=0;
+setInterval(()=>{
+  const box=document.getElementById('reminder-box');
+  if(!box)return;
+  box.style.opacity='0';
+  setTimeout(()=>{
+    rIdx=(rIdx+1)%reminders.length;
+    box.textContent=reminders[rIdx];
+    box.style.opacity='1';
+  },400);
+},4000);
 </script>
 </body>
 </html>
