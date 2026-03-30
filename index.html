@@ -21,213 +21,298 @@
 html,body{height:100%;overflow-x:hidden}
 body{font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center}
 
-/* APP WRAPPER */
 .app{width:100%;max-width:430px;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;position:relative;padding-bottom:72px}
 
-/* SCREENS - key fix: only .active shows */
+/* SCREENS */
 .screen{display:none!important}
-.screen.active{display:flex!important;flex-direction:column}
-.screen-full{min-height:calc(100vh - 72px)}
+.screen.active{display:flex!important;flex-direction:column;min-height:calc(100vh - 72px)}
 
 /* NAV */
 .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;border-top:1px solid var(--border);display:flex;z-index:999;padding:6px 0 10px}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:transparent;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:10px;color:var(--muted);font-weight:600;padding:4px 0}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:transparent;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:10px;color:var(--muted);font-weight:600;padding:4px 0;transition:color .15s}
 .nav-btn.active{color:var(--text)}
 .nav-icon{font-size:22px;line-height:1}
 
 /* LOGO */
-.logo-small{width:40px;height:40px;display:block;margin:20px auto 0}
+.logo-top{width:64px;height:64px;display:block;margin:24px auto 12px}
 
 /* BUTTONS */
 .btn-dark,.btn-light,.btn-ghost{display:block;width:calc(100% - 32px);margin:0 16px 10px;padding:16px;border-radius:999px;font-family:'Quicksand',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;border:none;transition:transform .15s,opacity .15s}
 .btn-dark{background:#111;color:#fff}
 .btn-dark:active{transform:scale(.97)}
 .btn-light{background:var(--btngreen);color:var(--text)}
+.btn-light:active{transform:scale(.97)}
 .btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text)}
 .btn-ghost:hover{background:var(--border)}
 .btn-row{display:flex;gap:10px;margin:0 16px 10px}
-.btn-row .btn-ghost,.btn-row .btn-dark{margin:0;flex:1;width:auto}
+.btn-row .btn-ghost,.btn-row .btn-dark,.btn-row .btn-light{margin:0;flex:1;width:auto}
 
 /* CARDS */
 .card{margin:0 16px 12px;background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid var(--border)}
 
+/* PROGRESS DOTS */
+.progress-wrap{display:flex;gap:6px;justify-content:center;padding:8px 24px 16px}
+.progress-dot{height:4px;flex:1;max-width:60px;background:var(--border);border-radius:2px;transition:background .3s}
+.progress-dot.active{background:var(--text)}
+
 /* SLIDERS */
 .slider-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .slider-label{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
-.slider-value{font-size:18px;font-weight:700}
+.slider-value{font-size:20px;font-weight:700}
 input[type=range]{width:100%;height:6px;border-radius:3px;outline:none;border:none;background:linear-gradient(to right,var(--green) 0%,var(--green) 50%,var(--border) 50%,var(--border) 100%);cursor:pointer;-webkit-appearance:none;appearance:none;margin-bottom:4px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer}
 input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--border);cursor:pointer}
 .slider-hint{font-size:12px;color:var(--muted);margin-bottom:16px}
-
-/* PROGRESS DOTS */
-.progress-wrap{display:flex;gap:6px;justify-content:center;padding:12px 24px 20px}
-.progress-dot{height:4px;flex:1;max-width:60px;background:var(--border);border-radius:2px;transition:background .3s}
-.progress-dot.active{background:var(--text)}
+.slider-divider{height:1px;background:var(--border);margin:12px 0}
 
 /* TIP BOX */
-.tip-box{margin:0 16px 12px;padding:18px 20px;background:var(--btngreen);border-radius:var(--radius);font-size:14px;line-height:1.6;font-weight:500}
+.tip-box{margin:0 16px 12px;padding:20px;background:var(--btngreen);border-radius:var(--radius);font-size:14px;line-height:1.7;font-weight:500}
 
 /* TIMER */
-.timer-screen-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:16px 0}
-.dur-row{display:flex;gap:8px;justify-content:center;margin-bottom:24px}
+.timer-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:8px 0}
+.dur-row{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
 .dur-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .dur-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
-.timer-circle{position:relative;width:200px;height:200px;margin-bottom:16px}
+.timer-circle{position:relative;width:200px;height:200px;margin-bottom:12px}
 .timer-circle svg{transform:rotate(-90deg)}
 .timer-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .timer-time{font-size:40px;font-weight:700;letter-spacing:-2px}
 .timer-status{font-size:12px;color:var(--muted);margin-top:4px}
-.timer-task-label{font-size:13px;color:var(--muted);text-align:center;margin-bottom:16px;min-height:18px}
-
-/* VICTORIA SCREEN */
-.victoria-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:24px;text-align:center}
-.victoria-cat{width:140px;margin-bottom:20px;animation:popin .4s cubic-bezier(.175,.885,.32,1.275)}
-@keyframes popin{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+.timer-task-label{font-size:13px;color:var(--muted);text-align:center;margin-bottom:12px;min-height:18px;font-style:italic}
+.noise-pill{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:11px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s}
+.noise-pill.on{background:var(--btngreen);border-color:#aad06a;color:var(--text)}
 
 /* TASK INPUT */
 .task-input{width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:'Quicksand',sans-serif;font-size:14px;color:var(--text);background:#fafafa;outline:none;transition:border .2s}
 .task-input:focus{border-color:#aaa}
-.task-hint{font-size:12px;color:var(--muted);margin-top:6px}
 textarea.task-input{resize:none;min-height:80px}
+.task-hint{font-size:12px;color:var(--muted);margin-top:6px}
 
 /* SECTIONS */
 .section-title{font-size:16px;font-weight:700;margin:16px 16px 10px}
-.step-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
-.step-item:last-child{border-bottom:none}
-.step-num{width:24px;height:24px;border-radius:50%;background:var(--btngreen);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
-.reminder{padding:12px 14px;background:var(--btngreen);border-radius:var(--radius-sm);font-size:13px;font-weight:600;margin-bottom:8px;line-height:1.4}
-.planner-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.planner-item:last-child{border-bottom:none}
-.planner-info{flex:1}
-.planner-name{font-size:14px;font-weight:700}
-.planner-desc{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* CHUNK */
+.chunk-first{margin:0 16px 12px;background:var(--btngreen);border-radius:var(--radius);padding:18px;border:1px solid #b8e87a}
+.chunk-first-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;color:#4a7a0a;text-transform:uppercase;margin-bottom:8px}
+.chunk-first-txt{font-size:15px;font-weight:700;margin-bottom:12px;line-height:1.4}
+.chunk-done-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:999px;background:#111;color:#fff;border:none;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.chunk-done-btn.done{background:var(--btngreen);color:#111;border:1.5px solid #b8e87a}
+.chunk-steps-wrap{margin:0 16px 10px}
+.chunk-step{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);animation:fadeup .25s ease}
+.chunk-step:last-child{border-bottom:none}
+@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chunk-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s}
+.chunk-check.done{background:#111;border-color:#111;color:#fff}
+.chunk-step-txt{flex:1;font-size:14px;line-height:1.4}
+.chunk-step-txt.done{text-decoration:line-through;color:var(--muted)}
+.chunk-split{font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-family:'Quicksand',sans-serif;font-weight:600;white-space:nowrap;transition:background .15s}
+.chunk-split:hover{background:var(--border)}
+.chunk-prog-wrap{margin:0 16px 12px;padding:14px 16px;background:var(--card);border-radius:var(--radius-sm);border:1px solid var(--border)}
+.chunk-prog-label{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px}
+.chunk-prog-bar-bg{background:var(--border);border-radius:3px;height:5px;overflow:hidden;margin-bottom:5px}
+.chunk-prog-bar{height:5px;background:#111;border-radius:3px;transition:width .4s ease}
+.chunk-prog-txt{font-size:11px;color:var(--muted)}
+
+/* CELEBRACIÓN PARCIAL */
+.celebracion-parcial{display:none;margin:0 16px 12px;padding:18px;background:var(--btngreen);border-radius:var(--radius);text-align:center;border:1px solid #b8e87a;animation:fadeup .3s ease}
+.celebracion-parcial p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* VICTORIA */
+.victoria-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:24px;text-align:center}
+.victoria-cat{width:130px;margin-bottom:16px;animation:popin .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes popin{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+.premio-input{width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:'Quicksand',sans-serif;font-size:14px;color:var(--text);background:#fafafa;outline:none;margin-bottom:10px}
+.premio-guardado{display:none;font-size:13px;color:#3a7a1a;font-weight:600;text-align:center;margin-top:6px}
+
+/* VICTORIA 100% */
+.victoria-100{background:var(--btngreen);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center;position:relative;overflow:hidden}
+.confetti-piece{position:absolute;width:8px;height:8px;border-radius:1px;animation:confetti-fall 3s ease-in-out infinite}
+@keyframes confetti-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+.victoria-100-circle{width:140px;height:140px;border-radius:50%;background:#fff;border:3px solid #111;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:24px auto;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+
+/* CHECK-IN CORPORAL */
+.habit-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.habit-row:last-child{border-bottom:none}
+.habit-label{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.habit-counter{display:flex;align-items:center;gap:8px}
+.habit-btn{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Quicksand',sans-serif;font-weight:700;transition:all .15s}
+.habit-btn:hover{background:var(--border)}
+.habit-num{font-size:16px;font-weight:700;min-width:20px;text-align:center}
+.habit-check{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
+.habit-check.on{background:#111;border-color:#111}
+.vibe-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.vibe-btn.on{background:var(--btngreen);border-color:#aad06a}
+
+/* MISC */
+.reminder{padding:12px 14px;background:var(--btngreen);border-radius:var(--radius-sm);font-size:13px;font-weight:600;margin-bottom:8px;line-height:1.4;transition:opacity .4s}
 .tag-btn{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:#fff;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
 .tag-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
 .feed-entry{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
 .feed-entry:last-child{border-bottom:none}
 .feed-avatar{width:34px;height:34px;border-radius:50%;background:var(--btngreen);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .feed-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:999px;font-weight:700;margin-left:4px;background:var(--btngreen);color:#3a7a1a}
-.vibe-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
-.vibe-btn.on{background:var(--btngreen);border-color:#aad06a}
-.premio-guardado{display:none;font-size:13px;color:#3a7a1a;font-weight:600;text-align:center;margin-top:8px}
-.freebie-card{margin:12px 16px;background:var(--btngreen);border-radius:var(--radius);padding:18px}
+.freebie-card{margin:0 16px 12px;background:var(--btngreen);border-radius:var(--radius);padding:18px}
 .social-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;font-family:'Quicksand',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-decoration:none}
+.step-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.step-item:last-child{border-bottom:none}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--btngreen);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+
+
 </style>
 </head>
 <body>
 <div class="app">
 
 <!-- ══ INICIO ══ -->
-<div id="s-welcome" class="screen screen-full active">
+<div id="s-welcome" class="screen active">
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center">
     <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:80px;height:80px;margin-bottom:24px" alt="GoFlow">
-    <div style="font-size:28px;font-weight:700;margin-bottom:10px" id="greeting-text">¡Buenas noches! 🌙</div>
+    <div style="font-size:28px;font-weight:700;margin-bottom:10px" id="greeting-text">¡Buenas tardes! 👋</div>
     <div style="font-size:14px;color:var(--muted);line-height:1.6;max-width:280px;margin-bottom:32px">Cada día es diferente. Tu plan también.<br>Cuéntame cómo estás y te ayudo a empezar.</div>
-    <button class="btn-dark" onclick="go('s-energy')" style="width:100%;margin:0 0 12px">Empezar ✨</button>
-    <button class="btn-ghost" onclick="go('s-timer')" style="width:100%;margin:0">Ir al timer →</button>
+    <button class="btn-dark" onclick="go('s-checkin')" style="width:100%;margin:0 0 12px">Empezar ✨</button>
+    <button class="btn-ghost" onclick="goToTimer()" style="width:100%;margin:0">Ir al timer →</button>
   </div>
 </div>
 
-<!-- ══ CHECK-IN 1: ENERGÍA ══ -->
-<div id="s-energy" class="screen">
-  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
+<!-- ══ CHECK-IN (todo junto) ══ -->
+<div id="s-checkin" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
   <div class="progress-wrap">
     <div class="progress-dot active"></div>
     <div class="progress-dot"></div>
-    <div class="progress-dot"></div>
   </div>
   <div class="card">
-    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo está tu energía hoy?</h2>
+    <h2 style="font-size:16px;font-weight:700;text-align:center;margin-bottom:18px">¿Cómo están tus niveles hoy?</h2>
+
+    <!-- ENERGÍA -->
     <div class="slider-label-row">
       <span class="slider-label">⚡ Energía</span>
       <span class="slider-value" id="val-e">5</span>
     </div>
     <input type="range" id="sl-e" min="0" max="10" value="5" oninput="slUpdate('e',this.value)">
     <div class="slider-hint" id="hint-e">5 — Punto medio</div>
-  </div>
-  <div style="flex:1"></div>
-  <button class="btn-dark" onclick="go('s-sensory')">Siguiente</button>
-</div>
 
-<!-- ══ CHECK-IN 2: SENSORIAL ══ -->
-<div id="s-sensory" class="screen">
-  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
-  <div class="progress-wrap">
-    <div class="progress-dot active"></div>
-    <div class="progress-dot active"></div>
-    <div class="progress-dot"></div>
-  </div>
-  <div class="card">
-    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Cómo te sientes sensorialmente?</h2>
+    <div class="slider-divider"></div>
+
+    <!-- SENSORIAL -->
     <div class="slider-label-row">
-      <span class="slider-label">🌿 Sensorial</span>
+      <span class="slider-label">🌿 Comodidad sensorial</span>
       <span class="slider-value" id="val-s">5</span>
     </div>
     <input type="range" id="sl-s" min="0" max="10" value="5" oninput="slUpdate('s',this.value)">
     <div class="slider-hint" id="hint-s">5 — Manejable</div>
-  </div>
-  <div style="flex:1"></div>
-  <div class="btn-row">
-    <button class="btn-ghost" onclick="go('s-energy')">Atrás</button>
-    <button class="btn-dark" onclick="go('s-focus')">Siguiente</button>
-  </div>
-</div>
 
-<!-- ══ CHECK-IN 3: FOCO ══ -->
-<div id="s-focus" class="screen">
-  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
-  <div class="progress-wrap">
-    <div class="progress-dot active"></div>
-    <div class="progress-dot active"></div>
-    <div class="progress-dot active"></div>
-  </div>
-  <div class="card">
-    <h2 style="font-size:18px;font-weight:700;text-align:center;margin-bottom:20px">¿Qué tal el foco hoy?</h2>
+    <div class="slider-divider"></div>
+
+    <!-- FOCO -->
     <div class="slider-label-row">
       <span class="slider-label">🎯 Foco</span>
       <span class="slider-value" id="val-f">5</span>
     </div>
     <input type="range" id="sl-f" min="0" max="10" value="5" oninput="slUpdate('f',this.value)">
     <div class="slider-hint" id="hint-f">5 — Más o menos</div>
-    <div style="margin-top:16px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:8px">🚀 Tarea principal de hoy</div>
-      <input type="text" id="task-main" class="task-input" placeholder="Ej: responder emails, diseñar...">
-      <div class="task-hint">Opcional — la sugerencia será sobre cómo abordarla.</div>
-    </div>
+  </div>
+  <div style="flex:1"></div>
+  <button class="btn-dark" onclick="go('s-task')">Siguiente</button>
+</div>
+
+<!-- ══ TAREA ══ -->
+<div id="s-task" class="screen">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
+  <div class="progress-wrap">
+    <div class="progress-dot active"></div>
+    <div class="progress-dot active"></div>
+  </div>
+  <div class="card">
+    <h2 style="font-size:16px;font-weight:700;margin-bottom:6px">¿Cuál es tu tarea principal de hoy?</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Opcional — la sugerencia se adaptará a ella.</p>
+    <input type="text" id="task-main" class="task-input" placeholder="Ej: preparar presentación, responder emails...">
   </div>
   <div style="flex:1"></div>
   <div class="btn-row">
-    <button class="btn-ghost" onclick="go('s-sensory')">Atrás</button>
+    <button class="btn-ghost" onclick="go('s-checkin')">Atrás</button>
     <button class="btn-dark" onclick="getSugerencia()">Obtener sugerencia</button>
   </div>
 </div>
 
 <!-- ══ SUGERENCIA ══ -->
 <div id="s-tip" class="screen">
-  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-small" alt="GoFlow">
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:16px 0">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:8px 0">
     <div class="tip-box" id="tip-box">
       <span id="tip-text" style="color:var(--muted);font-style:italic">Consultando con la IA... 🧠</span>
     </div>
   </div>
-  <button class="btn-dark" onclick="go('s-timer')">¡Vamos! ✨</button>
-  <button class="btn-ghost" onclick="tipMasSuave()">No puedo ahora, algo más suave</button>
-  <button class="btn-ghost" onclick="tipDescanso()">🔋 Necesito descansar primero</button>
   <div id="tip-noche" style="display:none;margin:0 16px 12px;padding:18px;background:#f0f0f0;border-radius:var(--radius);text-align:center">
-    <div style="font-size:28px;margin-bottom:8px">🌙</div>
+    <div style="font-size:26px;margin-bottom:8px">🌙</div>
     <div style="font-weight:700;font-size:16px;margin-bottom:6px">Es hora de cerrar el día</div>
     <div id="tip-noche-txt" style="font-size:13px;color:var(--muted);line-height:1.5"></div>
   </div>
+  <!-- 2 verdes + 2 gris -->
+  <div class="btn-row" style="flex-wrap:wrap;gap:10px">
+    <button class="btn-light" onclick="navGo('s-timer','nav-timer')" style="flex:1;min-width:140px;margin:0">¡Vamos! ✨</button>
+    <button class="btn-light" onclick="goChunk()" style="flex:1;min-width:140px;margin:0">Ayúdame a empezar 🚀</button>
+  </div>
+  <div class="btn-row" style="flex-wrap:wrap;gap:10px;margin-top:0">
+    <button class="btn-ghost" onclick="tipMasSuave()" style="flex:1;min-width:140px;margin:0">No puedo ahora</button>
+    <button class="btn-ghost" onclick="tipDescanso()" style="flex:1;min-width:140px;margin:0">Necesito descansar</button>
+  </div>
+</div>
+
+<!-- ══ MICROTAREAS (CHUNK) ══ -->
+<div id="s-chunk" class="screen" style="overflow-y:auto">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
+  <div style="padding:0 16px 12px;text-align:center">
+    <div style="font-size:18px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" id="chunk-titulo">Tu tarea</div>
+    <div style="font-size:13px;color:var(--muted)">vamos a hacerlo en pequeño 🌱</div>
+  </div>
+
+  <!-- PRIMER PASO -->
+  <div class="chunk-first">
+    <div class="chunk-first-lbl">👉 Empieza aquí · 1-2 min</div>
+    <div class="chunk-first-txt" id="chunk-paso0">Abre el documento</div>
+    <button class="chunk-done-btn" id="chunk-btn0" onclick="completarPrimero()">✓ Hecho</button>
+  </div>
+
+  <!-- CELEBRACIÓN PARCIAL -->
+  <div class="celebracion-parcial" id="celeb-parcial">
+    <div style="font-size:22px;margin-bottom:6px">🌟</div>
+    <div style="font-size:16px;font-weight:700" id="celeb-txt">¡Ya estás en marcha!</div>
+    <p id="celeb-sub">Los pequeños pasos sostenidos generan grandes resultados.</p>
+  </div>
+
+  <!-- SIGUIENTES PASOS -->
+  <div id="chunk-rest" style="display:none">
+    <div class="chunk-steps-wrap">
+      <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:8px" id="chunk-sub">¡Ya has empezado! Sigamos...</div>
+      <div id="chunk-lista"></div>
+    </div>
+    <div style="display:flex;gap:8px;padding:0 16px 8px;flex-wrap:wrap">
+      <button class="chunk-split" onclick="masPereza()">😩 Esto me da pereza</button>
+      <button class="chunk-split" onclick="masSmall()">✂️ Hacerlo más pequeño</button>
+    </div>
+  </div>
+
+  <!-- PROGRESO -->
+  <div class="chunk-prog-wrap">
+    <div class="chunk-prog-label" id="prog-label">0 pasos completados</div>
+    <div class="chunk-prog-bar-bg"><div class="chunk-prog-bar" id="prog-bar" style="width:0%"></div></div>
+    <div class="chunk-prog-txt" id="prog-txt">El primer paso es el más difícil</div>
+  </div>
+
+  <button class="btn-dark" onclick="goToTimer()" style="margin-top:4px">⏱ Ir al Pomodoro</button>
+  <div style="height:16px"></div>
 </div>
 
 <!-- ══ TIMER ══ -->
-<div id="s-timer" class="screen screen-full">
-  <div style="padding:24px 24px 0;text-align:center">
-    <h2 style="font-size:22px;font-weight:700;margin-bottom:8px">Timer</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:320px;margin:0 auto">El Método Pomodoro tradicional son 25 min de foco y 5 de descanso, pero aquí mandas tú: puedes hacer bloques de 45/10 o lo que tu energía te pida hoy. Regla innegociable: cuidar lo básico entre bloques. Bebe agua, muévete un poco y come cuando toca. No dejes que el flujo te haga olvidar que tu cuerpo también necesita gasolina. ¡A por ello!</p>
+<div id="s-timer" class="screen">
+  <div style="display:flex;flex-direction:column;align-items:center;padding:20px 24px 0">
+    <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:64px;height:64px;margin-bottom:4px" alt="GoFlow">
+    <div id="pomodoro-hint" style="text-align:center;font-size:11px;color:var(--muted);line-height:1.5;max-width:300px;margin-bottom:4px">
+      El <strong style="color:var(--text)">Método Pomodoro</strong> son 25 min de foco y 5 de descanso, pero aquí mandas tú. <strong style="color:var(--text)">Importante:</strong> descansa, muévete y bebe agua entre bloques.
+    </div>
   </div>
-  <div class="timer-screen-inner">
+  <div class="timer-wrap">
     <div class="dur-row">
       <button class="dur-btn" onclick="setDur(5,'b5')" id="b5">5 min</button>
       <button class="dur-btn on" onclick="setDur(25,'b25')" id="b25">25 min</button>
@@ -235,11 +320,11 @@ textarea.task-input{resize:none;min-height:80px}
       <button class="dur-btn" onclick="setDur(10,'b10')" id="b10">10 min</button>
     </div>
     <div class="timer-circle">
-      <svg width="200" height="200">
-        <circle cx="100" cy="100" r="88" fill="none" stroke="#e8e8e4" stroke-width="8"/>
-        <circle id="t-arc" cx="100" cy="100" r="88" fill="none" stroke="#111" stroke-width="8"
-          stroke-dasharray="553" stroke-dashoffset="0" stroke-linecap="round"
-          style="transition:stroke-dashoffset .5s linear"/>
+      <svg width="180" height="180">
+        <circle cx="90" cy="90" r="78" fill="none" stroke="#e8e8e4" stroke-width="5"/>
+        <circle id="t-arc" cx="90" cy="90" r="78" fill="none" stroke="#111" stroke-width="5"
+          stroke-dasharray="490" stroke-dashoffset="0" stroke-linecap="round"
+          style="transition:stroke-dashoffset 1s linear"/>
       </svg>
       <div class="timer-center">
         <div class="timer-time" id="t-display">25:00</div>
@@ -247,27 +332,58 @@ textarea.task-input{resize:none;min-height:80px}
       </div>
     </div>
     <div class="timer-task-label" id="t-task"></div>
+    <!-- NOISE PILLS -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">
+      <button class="noise-pill on" id="np-off" onclick="setNoise('off')">Sin ruido</button>
+      <button class="noise-pill" id="np-rain" onclick="setNoise('rain')">🌧 Lluvia</button>
+      <button class="noise-pill" id="np-forest" onclick="setNoise('forest')">🌲 Bosque</button>
+      <button class="noise-pill" id="np-waves" onclick="setNoise('waves')">🌊 Olas</button>
+    </div>
   </div>
-  <button class="btn-dark" id="t-btn" onclick="toggleTimer()">Iniciar</button>
-  <button class="btn-ghost" onclick="resetTimer()">Reset</button>
+  <button class="btn-light" id="t-btn" onclick="toggleTimer()">Iniciar</button>
+  <button class="btn-ghost" id="t-reset" onclick="resetTimer()" style="display:none">Reset</button>
 </div>
 
-<!-- ══ VICTORIA ══ -->
-<div id="s-victoria" class="screen screen-full">
+<!-- ══ VICTORIA (timer acaba) ══ -->
+<div id="s-victoria" class="screen">
   <div class="victoria-inner">
     <img src="https://storage.mlcdn.com/account_image/2135579/7oqKJSOMnqSLBXqqXIjp5vdWdpIWPRyxhhZp2VgW.png" class="victoria-cat" alt="victoria">
     <div style="font-size:24px;font-weight:700;margin-bottom:6px" id="v-titulo">¡Lo conseguiste! 🎉</div>
-    <div style="font-size:14px;color:var(--muted);margin-bottom:24px" id="v-sub">Sesión completada. Eso cuenta.</div>
+    <div style="font-size:14px;color:var(--muted);margin-bottom:20px" id="v-sub">Sesión completada. Eso cuenta.</div>
     <p style="font-size:13px;font-weight:700;margin-bottom:10px">¿Cómo vas a premiarte? 🎁</p>
-    <input type="text" id="v-premio" class="task-input" placeholder="Un café, 10 min de TikTok, una galleta…" style="margin-bottom:10px">
+    <input type="text" id="v-premio" class="premio-input" placeholder="Un café, 10 min de TikTok, una galleta…">
     <button class="btn-dark" id="v-guardar" onclick="guardarPremio()" style="width:100%;margin:0 0 8px">¡Me lo merezco! ✨</button>
     <div class="premio-guardado" id="v-guardado"></div>
-    <button class="btn-ghost" onclick="go('s-timer')" style="width:100%;margin-top:10px">Volver al timer</button>
+    <button class="btn-ghost" onclick="resetYVolver()" style="width:100%;margin-top:10px">Reiniciar timer</button>
+  </div>
+</div>
+
+<!-- ══ VICTORIA 100% (tarea completa) ══ -->
+<div id="s-victoria100" class="screen">
+  <div class="victoria-100">
+    <!-- confetti -->
+    <div class="confetti-piece" style="left:10%;background:#111;animation-delay:0s"></div>
+    <div class="confetti-piece" style="left:25%;background:var(--green);animation-delay:.3s"></div>
+    <div class="confetti-piece" style="left:50%;background:#111;animation-delay:.6s"></div>
+    <div class="confetti-piece" style="left:70%;background:var(--green);animation-delay:.9s"></div>
+    <div class="confetti-piece" style="left:85%;background:#111;animation-delay:.15s"></div>
+    <div class="confetti-piece" style="left:40%;background:var(--green);animation-delay:.45s"></div>
+
+    <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:52px;height:52px;margin-bottom:16px" alt="GoFlow">
+    <div style="font-size:24px;font-weight:700;margin-bottom:4px">¡Lo lograste!</div>
+    <div style="font-size:14px;color:#555;margin-bottom:4px;font-weight:600">Has acabado tu tarea</div>
+    <div style="font-size:13px;color:#666;margin-bottom:16px">Este logro es solo tuyo.<br>Asegúrate de celebrarlo como lo mereces.</div>
+    <div class="victoria-100-circle">
+      <div style="font-size:32px;font-weight:700">100%</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Completado</div>
+    </div>
+    <button class="btn-dark" onclick="navGo('s-welcome','nav-welcome')" style="width:100%;margin:0">Volver al inicio</button>
   </div>
 </div>
 
 <!-- ══ TOOLS ══ -->
-<div id="s-tools" class="screen" style="padding-top:20px">
+<div id="s-tools" class="screen" style="overflow-y:auto">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
   <div class="section-title">El primer paso para arrancar</div>
   <div class="card">
     <p style="font-size:13px;color:var(--muted);margin-bottom:12px">No hace falta saber todo el camino. Solo el primer paso.</p>
@@ -287,14 +403,14 @@ textarea.task-input{resize:none;min-height:80px}
     <button class="vibe-btn" onclick="this.classList.toggle('on')">Con máscara puesta</button>
   </div>
   <div class="section-title">Recordatorio</div>
-  <div style="padding:0 16px 16px">
-    <div id="reminder-box" class="reminder" style="text-align:center;font-size:15px;transition:opacity .4s">No tienes que hacerlo perfecto. Hecho > perfecto.</div>
+  <div style="padding:0 16px 20px">
+    <div id="reminder-box" class="reminder" style="text-align:center;font-size:15px">No tienes que hacerlo perfecto. Hecho > perfecto.</div>
   </div>
 </div>
 
 <!-- ══ RECURSOS ══ -->
-<div id="s-recursos" class="screen" style="overflow-y:auto;padding-top:20px">
-  <div style="height:20px"></div>
+<div id="s-recursos" class="screen" style="overflow-y:auto">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
   <div class="section-title" style="text-align:center">Planners y guías TDAH</div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 16px 12px">
     <a href="https://payhip.com/Nat2GoStudio" target="_blank" style="display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-decoration:none;color:var(--text);text-align:center">
@@ -316,12 +432,12 @@ textarea.task-input{resize:none;min-height:80px}
     <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.5">Lo que me hubiera gustado tener cuando me diagnosticaron. 7 páginas para TDAH adulto.</div>
     <button class="btn-dark" onclick="window.open('https://nat2go.lemonsqueezy.com/','_blank')" style="width:100%;margin:0">Descarga gratis →</button>
   </div>
- <div style="margin:0 16px 20px;background:#fff;border-radius:16px;padding:20px;border:1px solid #e8e8e4">
-  <div style="font-size:15px;font-weight:700;margin-bottom:6px">Únete a la comunidad GoFlow</div>
-  <div style="font-size:13px;color:#888;margin-bottom:16px;line-height:1.5">Recursos y apoyo para tu cerebro neurodivergente. Sin spam, sin presión.</div>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10bcd2a3cba9a35b75b09b58e062" type="text/javascript"></script>
-  <button class="ml-onclick-form" onclick="ml('show', '4Sfk6N', true)" style="display:block;width:100%;padding:14px;background:#e4fdbf;border-radius:999px;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;color:#111;text-align:center;border:none;cursor:pointer">Suscribirme gratis →</button>
-</div>
+  <div style="margin:0 16px 16px;background:#fff;border-radius:var(--radius);padding:20px;border:1px solid var(--border)">
+    <div style="font-size:15px;font-weight:700;margin-bottom:6px">Únete a la comunidad GoFlow</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5">Recursos y apoyo para tu cerebro neurodivergente. Sin spam, sin presión.</div>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10bcd2a3cba9a35b75b09b58e062" type="text/javascript"></script>
+    <button class="ml-onclick-form" onclick="ml('show', '4Sfk6N', true)" style="display:block;width:100%;padding:14px;background:var(--btngreen);border-radius:999px;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;color:#111;text-align:center;border:none;cursor:pointer">Suscribirme gratis →</button>
+  </div>
   <div class="section-title">Sígueme</div>
   <div style="display:flex;gap:8px;padding:0 16px 24px;flex-wrap:wrap">
     <a href="https://www.instagram.com/natigolaszewski" target="_blank" class="social-btn">@natigolaszewski</a>
@@ -330,7 +446,8 @@ textarea.task-input{resize:none;min-height:80px}
 </div>
 
 <!-- ══ COMUNIDAD ══ -->
-<div id="s-comunidad" class="screen" style="overflow-y:auto;padding-top:20px">
+<div id="s-comunidad" class="screen" style="overflow-y:auto">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
   <div class="section-title">Comparte una vivencia</div>
   <div class="card">
     <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Victorias, dificultades, descubrimientos — todo es bienvenido.</p>
@@ -363,24 +480,109 @@ textarea.task-input{resize:none;min-height:80px}
   </div>
 </div>
 
+<!-- ══ CHECK-IN CORPORAL ══ -->
+<div id="s-corporal" class="screen" style="overflow-y:auto">
+  <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
+  <div style="padding:0 16px 8px;text-align:center">
+    <div style="font-size:20px;font-weight:700;margin-bottom:4px">Check-in corporal</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.5">¿Has cuidado lo básico hoy?</div>
+  </div>
+
+  <!-- TRACKER HÁBITOS -->
+  <div class="card">
+    <div class="habit-row">
+      <div class="habit-label">💧 Agua</div>
+      <div class="habit-counter">
+        <button class="habit-btn" onclick="cambiarHabito('agua',-1)">−</button>
+        <span class="habit-num" id="hab-agua">0</span>
+        <button class="habit-btn" onclick="cambiarHabito('agua',1)">+</button>
+        <span style="font-size:11px;color:var(--muted);margin-left:4px">vasos</span>
+      </div>
+    </div>
+    <div class="habit-row">
+      <div class="habit-label">🏃 Movimiento</div>
+      <div class="habit-counter">
+        <div class="habit-check" id="hab-mov" onclick="toggleHabito('mov')"></div>
+      </div>
+    </div>
+    <div class="habit-row">
+      <div class="habit-label">☀️ Luz solar</div>
+      <div class="habit-counter">
+        <div class="habit-check" id="hab-sol" onclick="toggleHabito('sol')"></div>
+      </div>
+    </div>
+    <div class="habit-row" style="border-bottom:none">
+      <div class="habit-label">🍎 Comida</div>
+      <div class="habit-counter">
+        <div class="habit-check" id="hab-comida" onclick="toggleHabito('comida')"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CÓMO TE SIENTES -->
+  <div class="section-title">¿Cómo te sientes ahora?</div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px">
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Hiperfocusing</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Energía baja</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Ansiosa pero aquí</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Regulada</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Stimming</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Simplemente existiendo</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Función ejecutiva: off</button>
+    <button class="vibe-btn" onclick="this.classList.toggle('on')">Con máscara puesta</button>
+  </div>
+
+  <div style="padding:0 16px 12px">
+    <div class="reminder" id="reminder-corp" style="text-align:center;font-size:14px">Tu cerebro funciona diferente — no menos.</div>
+  </div>
+
+  <div style="flex:1"></div>
+  <button class="btn-dark" onclick="navGo('s-welcome','nav-welcome')" style="margin-top:8px">Volver al inicio</button>
+  <button class="btn-ghost" onclick="navGo('s-comunidad','nav-comunidad')">Compartir en comunidad</button>
+</div>
+
+<!-- ══ POMODORO INTRO (solo primera vez) ══ -->
+<div id="s-pomodoro-intro" class="screen">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;text-align:center">
+    <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:64px;height:64px;margin-bottom:24px" alt="GoFlow">
+    <div style="font-size:20px;font-weight:700;margin-bottom:16px">El Método Pomodoro</div>
+    <div style="background:var(--card);border-radius:var(--radius);padding:20px 24px;border:1px solid var(--border);margin-bottom:24px;text-align:left">
+      <p style="font-size:14px;line-height:1.75;color:var(--text)">
+        El <strong>Método Pomodoro</strong> tradicional son 25 min de foco y 5 de descanso, pero aquí mandas tú: puedes hacer bloques de 45/10 o lo que tu energía te pida hoy.
+      </p>
+      <p style="font-size:14px;line-height:1.75;color:var(--text);margin-top:12px">
+        <strong>Importante:</strong> Descansa, muévete, bebe agua y aliméntate bien entre bloques. No olvides que tu cuerpo también necesita gasolina.
+      </p>
+    </div>
+    <button class="btn-light" onclick="cerrarPomodoro()" style="width:100%;margin:0">Iniciar ✨</button>
+  </div>
+</div>
+
 <!-- ══ NAV ══ -->
 <nav class="nav">
   <button class="nav-btn active" id="nav-welcome" onclick="navGo('s-welcome','nav-welcome')">
-    <span class="nav-icon">🏠</span><span>Inicio</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Inicio</span>
   </button>
-  <button class="nav-btn" id="nav-timer" onclick="navGo('s-timer','nav-timer')">
-    <span class="nav-icon">⏱</span><span>Timer</span>
+  <button class="nav-btn" id="nav-timer" onclick="goToTimer()">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>Timer</span>
   </button>
   <button class="nav-btn" id="nav-tools" onclick="navGo('s-tools','nav-tools')">
-    <span class="nav-icon">🧰</span><span>Tools</span>
-  </button>
-  <button class="nav-btn" id="nav-recursos" onclick="navGo('s-recursos','nav-recursos')">
-    <span class="nav-icon">📓</span><span>Recursos</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+    <span>Tools</span>
   </button>
   <button class="nav-btn" id="nav-comunidad" onclick="navGo('s-comunidad','nav-comunidad')">
-    <span class="nav-icon">🫂</span><span>Comunidad</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+    <span>Comunidad</span>
+  </button>
+  <button class="nav-btn" id="nav-recursos" onclick="navGo('s-recursos','nav-recursos')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span>Recursos</span>
   </button>
 </nav>
+
+
 
 </div>
 
@@ -397,107 +599,108 @@ textarea.task-input{resize:none;min-height:80px}
 })();
 
 // ── NAVIGATION ──
-const ALL_SCREENS=['s-welcome','s-energy','s-sensory','s-focus','s-tip','s-timer','s-victoria','s-tools','s-recursos','s-comunidad'];
-
+const ALL=['s-welcome','s-checkin','s-task','s-tip','s-chunk','s-timer','s-victoria','s-victoria100','s-tools','s-recursos','s-comunidad','s-corporal','s-pomodoro-intro'];
 function go(id){
-  ALL_SCREENS.forEach(s=>{
-    const el=document.getElementById(s);
-    if(el){el.classList.remove('active');}
-  });
-  const target=document.getElementById(id);
-  if(target){target.classList.add('active');}
+  ALL.forEach(s=>{const el=document.getElementById(s);if(el)el.classList.remove('active');});
+  const t=document.getElementById(id);if(t)t.classList.add('active');
   window.scrollTo(0,0);
 }
+function cerrarPomodoro(){
+  localStorage.setItem('goflow_pomodoro_seen','1');
+  navGo('s-timer','nav-timer');
+}
 
-function navGo(screenId, navId){
-  go(screenId);
+function goToTimer(){
+  if(!localStorage.getItem('goflow_pomodoro_seen')){
+    go('s-pomodoro-intro');
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('nav-timer')?.classList.add('active');
+  }else{
+    navGo('s-timer','nav-timer');
+  }
+}
+
+function navGo(sid,nid){
+  go(sid);
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById(navId).classList.add('active');
+  document.getElementById(nid)?.classList.add('active');
 }
 
 // ── SLIDERS ──
 const sliderHints={
   e:{0:'0 — Vacía',3:'3 — Baja',5:'5 — Punto medio',7:'7 — Bastante bien',10:'10 — A tope'},
-  s:{0:'0 — Sobrecargada',3:'3 — Incómoda',5:'5 — Manejable',7:'7 — Ok',10:'10 — Perfecta'},
+  s:{0:'0 — Saturada',3:'3 — Incómoda',5:'5 — Manejable',7:'7 — Ok',10:'10 — Perfecta'},
   f:{0:'0 — Imposible',3:'3 — Difícil',5:'5 — Más o menos',7:'7 — Fluyendo',10:'10 — Hiperfoco'}
 };
-
-function slUpdate(key, val){
+function slUpdate(key,val){
   const v=parseInt(val);
   const pct=v/10*100;
   const sl=document.getElementById('sl-'+key);
   if(sl)sl.style.background=`linear-gradient(to right,#c8f57a 0%,#c8f57a ${pct}%,#e8e8e4 ${pct}%,#e8e8e4 100%)`;
-  const vEl=document.getElementById('val-'+key);
-  if(vEl)vEl.textContent=v;
-  const hEl=document.getElementById('hint-'+key);
-  if(hEl){
-    const hints=sliderHints[key];
-    const keys=Object.keys(hints).map(Number).sort((a,b)=>a-b);
-    let best=keys[0];
-    for(const k of keys){if(v>=k)best=k;}
-    hEl.textContent=hints[best];
-  }
+  document.getElementById('val-'+key).textContent=v;
+  const hints=sliderHints[key];
+  const keys=Object.keys(hints).map(Number).sort((a,b)=>a-b);
+  let best=keys[0];
+  for(const k of keys){if(v>=k)best=k;}
+  document.getElementById('hint-'+key).textContent=hints[best];
 }
 
 // ── TIP ──
-function getTipFallback(e,s,f){
-  e=parseInt(e);s=parseInt(s);f=parseInt(f);
-  const tarea=document.getElementById('task-main')?.value||'';
-  const t=tarea?` Para "${tarea}"`:'';
+function getTipFallback(){
+  const e=parseInt(document.getElementById('sl-e').value);
+  const s=parseInt(document.getElementById('sl-s').value);
+  const f=parseInt(document.getElementById('sl-f').value);
+  const t=document.getElementById('task-main')?.value||'';
+  const tx=t?` Para "${t}"`:'';
   if(e<=2&&s<=2&&f<=2)return'Todo en mínimos — hoy el éxito es simplemente existir. Descansa sin culpa. 💚';
-  if(e<=2)return'Tu energía está muy baja. Agua, luz natural y algo de comer primero. Tu cuerpo primero.';
+  if(e<=2)return'Tu energía está muy baja. Agua, luz natural y algo de comer primero.';
   if(s<=2)return'Sobrecarga sensorial alta. Auriculares, pantalla tenue, espacio tranquilo.';
-  if(f<=2)return'El foco está difícil hoy. Prueba solo 5 minutos con una cosa pequeña.'+t;
-  if(e<=4&&f<=4)return'Energía y foco bajos. Tareas suaves.'+t+' — empieza por lo más pequeño.';
-  if(e>=7&&f>=7)return'¡Buena combinación!'+t+' — aprovecha este momento para lo más importante.';
-  if(f>=7)return'¡Estás en flow! Silencia notificaciones y aprovecha.'+t;
-  return'Punto equilibrado. Una sesión de 25 minutos con una tarea concreta.'+t;
+  if(f<=2)return'El foco está difícil hoy. Solo 5 minutos con una cosa pequeña.'+tx;
+  if(e<=4&&f<=4)return'Energía y foco bajos. Tareas suaves.'+tx+' — empieza por lo más pequeño.';
+  if(e>=7&&f>=7)return'¡Buena combinación de energía y foco!'+tx+' — aprovecha este momento para lo más importante.';
+  if(f>=7)return'¡Estás en flow! Silencia notificaciones y aprovecha.'+tx;
+  return'Punto equilibrado. Una sesión de 25 minutos con una tarea concreta.'+tx;
 }
 
 async function getSugerencia(){
-  const e=document.getElementById('sl-e')?.value||5;
-  const s=document.getElementById('sl-s')?.value||5;
-  const f=document.getElementById('sl-f')?.value||5;
+  const e=document.getElementById('sl-e').value||5;
+  const s=document.getElementById('sl-s').value||5;
+  const f=document.getElementById('sl-f').value||5;
   const nombre=document.getElementById('task-main')?.value||'Anónimo';
   const h=new Date().getHours();
   go('s-tip');
-
-  const tipBox=document.getElementById('tip-box');
   const tipText=document.getElementById('tip-text');
   const tipNoche=document.getElementById('tip-noche');
-  const buttons=document.querySelectorAll('#s-tip .btn-dark,#s-tip .btn-ghost');
+  const tipBox=document.getElementById('tip-box');
+  const btns=document.querySelectorAll('#s-tip .btn-light,#s-tip .btn-ghost');
 
   if(h>=22){
     tipBox.style.display='none';
-    buttons.forEach(b=>b.style.display='none');
+    btns.forEach(b=>b.parentElement.style.display='none');
     tipNoche.style.display='block';
-    document.getElementById('tip-noche-txt').textContent=`Son las ${h}:${String(new Date().getMinutes()).padStart(2,'0')}. Tu cerebro ha trabajado suficiente. "${nombre!='Anónimo'?nombre:'tu tarea'}" puede esperar — descansar ES productividad.`;
+    document.getElementById('tip-noche-txt').textContent=`Son las ${h}:${String(new Date().getMinutes()).padStart(2,'0')}. Tu cerebro ha trabajado suficiente. Descansar ES productividad.`;
     return;
   }
-
   tipBox.style.display='block';
-  buttons.forEach(b=>b.style.display='block');
+  btns.forEach(b=>b.parentElement.style.display='');
   tipNoche.style.display='none';
   tipText.textContent='Consultando con la IA... 🧠';
-  tipText.style.color='var(--muted)';
-  tipText.style.fontStyle='italic';
-
+  tipText.style.color='var(--muted)';tipText.style.fontStyle='italic';
   try{
     const r=await fetch('https://hook.eu1.make.com/rdaco6dwmx92yowgs5t7k2v87u19oa3f',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({fecha:new Date().toLocaleString('es-ES'),energia:e,sensorial:s,foco:f,nombre})
     });
     const txt=await r.text();
-    tipText.textContent=txt&&txt.trim().length>5?txt.trim():getTipFallback(e,s,f);
+    tipText.textContent=txt&&txt.trim().length>5?txt.trim():getTipFallback();
     tipText.style.color='';tipText.style.fontStyle='';
   }catch(err){
-    tipText.textContent=getTipFallback(e,s,f);
+    tipText.textContent=getTipFallback();
     tipText.style.color='';tipText.style.fontStyle='';
   }
 }
-
 function tipMasSuave(){
-  const tips=['Pon un timer de 5 minutos. Solo 5.','¿Cuál es la parte más fácil? Empieza por ahí.','Abre el documento — solo ábrelo, nada más.','Bebe agua, respira, una cosa pequeña. Una sola.'];
+  const tips=['Pon un timer de 5 minutos. Solo 5.','¿Cuál es la parte más fácil? Empieza por ahí.','Abre el documento — solo ábrelo.','Bebe agua, respira, una cosa pequeña.'];
   document.getElementById('tip-text').textContent=tips[Math.floor(Math.random()*tips.length)];
   document.getElementById('tip-text').style.color='';document.getElementById('tip-text').style.fontStyle='';
 }
@@ -507,9 +710,139 @@ function tipDescanso(){
   document.getElementById('tip-text').style.color='';document.getElementById('tip-text').style.fontStyle='';
 }
 
+// ── CHUNK ──
+const chunkLib={
+  default:['Abre el documento o app','Mira lo que tienes','Escribe una sola frase o idea','Guarda lo que hiciste','¿Puedes hacer una cosa más?'],
+  pres:['Abre Canva o PowerPoint','Escribe el título','Elige una plantilla','Añade la primera diapositiva','Añade texto básico'],
+  email:['Abre tu cliente de email','Escribe el asunto','Escribe la primera frase','Completa el mensaje','Revisa y envía'],
+  diseno:['Abre Canva','Crea un documento nuevo','Define los colores','Añade el primer elemento','Guarda el archivo']
+};
+let cSteps=[],cDone=0,cFirstDone=false;
+const CELEB_45=0.45,CELEB_75=0.75;
+let celeb45done=false,celeb75done=false;
+
+function goChunk(){
+  const tarea=document.getElementById('task-main')?.value||'Tu tarea';
+  document.getElementById('chunk-titulo').textContent=tarea;
+  const t=tarea.toLowerCase();
+  let steps;
+  if(t.includes('presentaci')||t.includes('slides'))steps=chunkLib.pres;
+  else if(t.includes('email')||t.includes('correo'))steps=chunkLib.email;
+  else if(t.includes('diseño')||t.includes('logo'))steps=chunkLib.diseno;
+  else steps=chunkLib.default;
+  cSteps=[...steps];cDone=0;cFirstDone=false;celeb45done=false;celeb75done=false;
+  document.getElementById('chunk-paso0').textContent=cSteps[0];
+  document.getElementById('chunk-btn0').className='chunk-done-btn';
+  document.getElementById('chunk-btn0').textContent='✓ Hecho';
+  document.getElementById('chunk-rest').style.display='none';
+  document.getElementById('celeb-parcial').style.display='none';
+  updProg();go('s-chunk');
+}
+
+function completarPrimero(){
+  if(cFirstDone)return;
+  cFirstDone=true;cDone=1;
+  const btn=document.getElementById('chunk-btn0');
+  btn.classList.add('done');btn.textContent='✓ Completado';
+  setTimeout(()=>{
+    document.getElementById('chunk-rest').style.display='block';
+    renderSteps();updProg();
+  },300);
+}
+
+function renderSteps(){
+  const list=document.getElementById('chunk-lista');
+  const visible=cSteps.slice(1,3); // solo 2 visibles al principio
+  list.innerHTML=visible.map((s,i)=>`
+    <div class="chunk-step" id="cstep${i+1}">
+      <div class="chunk-check" id="ccheck${i+1}" onclick="togStep(${i+1})"></div>
+      <div class="chunk-step-txt" id="ctxt${i+1}">${s}</div>
+      <button class="chunk-split" onclick="splitStep(${i+1},'${s.replace(/'/g,"\\'").replace(/"/g,"&quot;")}')">Más pequeño</button>
+    </div>`).join('');
+}
+
+function togStep(idx){
+  const c=document.getElementById('ccheck'+idx),t=document.getElementById('ctxt'+idx);
+  const d=c.classList.toggle('done');
+  if(d){c.textContent='✓';t.classList.add('done');cDone++;}
+  else{c.textContent='';t.classList.remove('done');cDone--;}
+  updProg();
+  checkCelebParcial();
+  // desbloquear siguiente paso
+  if(d&&cDone<cSteps.length){
+    const nextIdx=cDone+1;
+    if(nextIdx<=cSteps.length-1&&!document.getElementById('cstep'+nextIdx)){
+      const list=document.getElementById('chunk-lista');
+      const div=document.createElement('div');
+      div.className='chunk-step';div.id='cstep'+nextIdx;
+      div.innerHTML=`<div class="chunk-check" id="ccheck${nextIdx}" onclick="togStep(${nextIdx})"></div><div class="chunk-step-txt" id="ctxt${nextIdx}">${cSteps[nextIdx]}</div><button class="chunk-split" onclick="splitStep(${nextIdx},'${cSteps[nextIdx].replace(/'/g,"\\'")}')">Más pequeño</button>`;
+      list.appendChild(div);
+    }
+  }
+  // victoria 100%
+  if(cDone>=cSteps.length){
+    setTimeout(()=>go('s-victoria100'),600);
+  }
+}
+
+function checkCelebParcial(){
+  const pct=cDone/cSteps.length;
+  const celeb=document.getElementById('celeb-parcial');
+  if(pct>=CELEB_45&&!celeb45done){
+    celeb45done=true;
+    document.getElementById('celeb-txt').textContent='¡Ya estás en marcha! 🌱';
+    document.getElementById('celeb-sub').textContent='Los pequeños pasos sostenidos generan grandes resultados.';
+    celeb.style.display='block';
+    setTimeout(()=>celeb.style.display='none',4000);
+  }
+  if(pct>=CELEB_75&&!celeb75done){
+    celeb75done=true;
+    document.getElementById('celeb-txt').textContent='¡Casi lo tienes! 🔥';
+    document.getElementById('celeb-sub').textContent='Si logras mejorar un 1% cada día durante un año, serás 37 veces mejor. — Hábitos Atómicos';
+    celeb.style.display='block';
+    setTimeout(()=>celeb.style.display='none',4000);
+  }
+}
+
+function splitStep(idx,text){
+  const sub=['Busca lo que necesitas','Prepara el entorno','Haz solo la primera parte','Guarda el avance'];
+  const row=document.getElementById('cstep'+idx);
+  if(row)row.outerHTML=sub.map((s,i)=>`
+    <div class="chunk-step" id="sub${idx}${i}">
+      <div class="chunk-check" id="subcheck${idx}${i}" onclick="togSub(${idx},${i})"></div>
+      <div class="chunk-step-txt" id="subtxt${idx}${i}">${s}</div>
+    </div>`).join('');
+}
+
+function togSub(idx,i){
+  const c=document.getElementById(`subcheck${idx}${i}`),t=document.getElementById(`subtxt${idx}${i}`);
+  const d=c.classList.toggle('done');
+  if(d){c.textContent='✓';t.classList.add('done');cDone++;}
+  else{c.textContent='';t.classList.remove('done');cDone--;}
+  updProg();checkCelebParcial();
+}
+
+function masPereza(){
+  const m=['Ok, respira. ¿Qué es lo más pequeño posible?','¿Puedes hacer solo 2 minutos?','Solo abre la app. Eso es todo.'];
+  document.getElementById('chunk-sub').textContent=m[Math.floor(Math.random()*m.length)];
+}
+function masSmall(){
+  const t=['Divide ese paso en 3 partes más pequeñas.','¿Puedes hacerlo en 30 segundos?','Empieza por lo más fácil, no por todo.'];
+  document.getElementById('chunk-sub').textContent=t[Math.floor(Math.random()*t.length)];
+}
+
+function updProg(){
+  const total=Math.max(cSteps.length,1);
+  const pct=Math.round(cDone/total*100);
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=cDone===0?'0 pasos completados':`${cDone} paso${cDone>1?'s':''} completado${cDone>1?'s':''}`;
+  const msgs=['El primer paso es el más difícil','Ya estás en marcha 🌱','¡Esto ya no es cero!','Sigues avanzando 💚','¡Casi! Sigue así ⚡'];
+  document.getElementById('prog-txt').textContent=msgs[Math.min(cDone,msgs.length-1)];
+}
+
 // ── TIMER ──
 let dur=25,rem=25*60,running=false,tInterval=null;
-const FULL=553;
+const FULL=490;
 const vMsgs=[
   ['¡Lo conseguiste! 🎉','Sesión completada. Eso cuenta.'],
   ['¡Eres increíble! 🌟','Tu cerebro acaba de hacer algo difícil.'],
@@ -518,20 +851,18 @@ const vMsgs=[
   ['¡Lo hiciste! 💪','El cerebro con TDAH que completa — eso eres tú.']
 ];
 
-function updateTimerDisplay(){
+function updTimer(){
   const m=Math.floor(rem/60),s=rem%60;
   document.getElementById('t-display').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
   document.getElementById('t-arc').style.strokeDashoffset=FULL*(1-rem/(dur*60));
 }
-
 function setDur(m,id){
   if(running)return;
   dur=m;rem=m*60;
   document.querySelectorAll('.dur-btn').forEach(b=>b.classList.remove('on'));
   document.getElementById(id).classList.add('on');
-  updateTimerDisplay();
+  updTimer();
 }
-
 function playSound(){
   try{
     const ctx=new(window.AudioContext||window.webkitAudioContext)();
@@ -547,6 +878,45 @@ function playSound(){
     });
   }catch(e){}
 }
+// ── RUIDO BLANCO ──
+let noiseCtx=null,noiseNode=null,currentNoise='off';
+
+function stopNoise(){
+  if(noiseNode){try{noiseNode.stop();}catch(e){}noiseNode=null;}
+  if(noiseCtx){try{noiseCtx.close();}catch(e){}noiseCtx=null;}
+}
+
+function setNoise(type){
+  stopNoise();
+  document.querySelectorAll('.noise-pill').forEach(b=>b.classList.remove('on'));
+  document.getElementById('np-'+type)?.classList.add('on');
+  currentNoise=type;
+  if(type==='off'||!running)return;
+  startNoiseType(type);
+}
+
+function startNoiseType(type){
+  if(type==='off')return;
+  try{
+    noiseCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const sz=noiseCtx.sampleRate*2;
+    const buf=noiseCtx.createBuffer(1,sz,noiseCtx.sampleRate);
+    const d=buf.getChannelData(0);
+    if(type==='rain'){
+      for(let i=0;i<sz;i++){d[i]=(Math.random()*2-1)*.15;if(Math.random()>.998)d[i]*=3;}
+    }else if(type==='forest'){
+      for(let i=0;i<sz;i++)d[i]=(Math.random()*2-1)*.06;
+    }else{// waves - brown
+      let last=0;
+      for(let i=0;i<sz;i++){const w=Math.random()*2-1;d[i]=(last+0.02*w)/1.02;last=d[i];d[i]*=3.5;}
+    }
+    noiseNode=noiseCtx.createBufferSource();
+    noiseNode.buffer=buf;noiseNode.loop=true;
+    const g=noiseCtx.createGain();g.gain.value=0.35;
+    noiseNode.connect(g);g.connect(noiseCtx.destination);
+    noiseNode.start();
+  }catch(e){}
+}
 
 function toggleTimer(){
   if(running){
@@ -556,17 +926,27 @@ function toggleTimer(){
   }else{
     running=true;
     document.getElementById('t-btn').textContent='Pausar';
+    document.getElementById('t-reset').style.display='block';
+    // ocultar hint pomodoro al iniciar
+    const hint=document.getElementById('pomodoro-hint');
+    if(hint)hint.style.display='none';
+    // start noise if selected
+    if(currentNoise!=='off')startNoiseType(currentNoise);
     const task=document.getElementById('task-main')?.value||'';
     document.getElementById('t-task').textContent=task?'Enfocada en: '+task:'';
     document.getElementById('t-status').textContent='Enfocando';
     tInterval=setInterval(()=>{
       if(rem<=0){
         clearInterval(tInterval);running=false;
-        document.getElementById('t-btn').textContent='¡Otra!';
+        document.getElementById('t-btn').textContent='Iniciar';
+        document.getElementById('t-reset').style.display='block';
         document.getElementById('t-status').textContent='¡Completado!';
         document.getElementById('t-arc').style.stroke='#c8f57a';
         playSound();
-        // Ir a pantalla de victoria
+        stopNoise();
+        // show pomodoro hint again
+        const hint2=document.getElementById('pomodoro-hint');
+        if(hint2)hint2.style.display='block';
         const idx=Math.floor(Math.random()*vMsgs.length);
         document.getElementById('v-titulo').textContent=vMsgs[idx][0];
         document.getElementById('v-sub').textContent=vMsgs[idx][1];
@@ -577,20 +957,28 @@ function toggleTimer(){
         setTimeout(()=>go('s-victoria'),800);
         return;
       }
-      rem--;updateTimerDisplay();
+      rem--;updTimer();
     },1000);
   }
 }
-
 function resetTimer(){
   clearInterval(tInterval);running=false;rem=dur*60;
   document.getElementById('t-btn').textContent='Iniciar';
+  document.getElementById('t-reset').style.display='none';
   document.getElementById('t-status').textContent='Listo';
   document.getElementById('t-task').textContent='';
   document.getElementById('t-arc').style.stroke='#111';
-  updateTimerDisplay();
+  stopNoise();
+  const hint3=document.getElementById('pomodoro-hint');
+  if(hint3)hint3.style.display='block';
+  updTimer();
 }
-updateTimerDisplay();
+function resetYVolver(){
+  resetTimer();
+  go('s-timer');
+  navGo('s-timer','nav-timer');
+}
+updTimer();
 
 function guardarPremio(){
   const tarea=document.getElementById('task-main')?.value||'Sin tarea';
@@ -606,20 +994,48 @@ function guardarPremio(){
   document.getElementById('v-guardar').disabled=true;
 }
 
-// ── PRIMER PASO ──
+
+
+// ── HÁBITOS ──
+const habCounts={agua:0};
+const habChecks={mov:false,sol:false,comida:false};
+function cambiarHabito(key,delta){
+  habCounts[key]=Math.max(0,habCounts[key]+delta);
+  document.getElementById('hab-'+key).textContent=habCounts[key];
+}
+function toggleHabito(key){
+  habChecks[key]=!habChecks[key];
+  const el=document.getElementById('hab-'+key);
+  el.classList.toggle('on');
+  el.textContent=habChecks[key]?'✓':'';
+}
+
+// ── TOOLS - PRIMER PASO ──
 const pasos=[
-  {intro:'Para empezar con',p:['Abre el documento o app — solo ábrelo.','Míralo 30 segundos sin hacer nada.','Haz UNA cosa pequeña. Solo una.','Celébralo. Ya arrancaste 🎉','¿Puedes hacer una más?']},
-  {intro:'Un primer paso para',p:['Cierra todo lo que no necesitas.','Bebe un sorbo de agua.','Pon un timer de 5 minutos.','Empieza. Solo 5 minutos.','¿Ves? Ya estás dentro 💚']},
-  {intro:'Para arrancar con',p:['¿Cuál es la acción más pequeña posible?','Solo esa. No pienses en el resto.','Hazla. Ahora.','Respira. Ya moviste la primera ficha.','El resto viene solo, de verdad.']}
+  {p:['Abre el documento o app — solo ábrelo.','Míralo 30 segundos sin hacer nada.','Haz UNA cosa pequeña. Solo una.','Celébralo. Ya arrancaste 🎉','¿Puedes hacer una más?']},
+  {p:['Cierra todo lo que no necesitas.','Bebe un sorbo de agua.','Pon un timer de 5 minutos.','Empieza. Solo 5 minutos.','¿Ves? Ya estás dentro 💚']},
+  {p:['¿Cuál es la acción más pequeña posible?','Solo esa. No pienses en el resto.','Hazla. Ahora.','Respira. Ya moviste la primera ficha.','El resto viene solo.']}
 ];
 function breakTask(){
   const t=document.getElementById('big-task').value.trim();
   const c=document.getElementById('task-steps');
   if(!t){c.innerHTML='<p style="font-size:13px;color:var(--muted)">Escribe lo que estás evitando arriba.</p>';return;}
   const s=pasos[Math.floor(Math.random()*pasos.length)];
-  c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:8px">${s.intro}: <strong>${t}</strong></p>`+
+  c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:8px">Para: <strong>${t}</strong></p>`+
     s.p.map((p,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div style="font-size:14px;line-height:1.5">${p}</div></div>`).join('');
 }
+
+// ── RECORDATORIOS ──
+const rems=['No tienes que hacerlo perfecto. Hecho > perfecto.','Enmascararse agota. Aquí no tienes que hacerlo.','Tu cerebro funciona diferente — no menos.','Un inicio de 5 minutos cuenta. Aparecer cuenta.','Los pequeños pasos sostenidos generan grandes resultados.','No hay una sola forma correcta de ser productiva.'];
+let rIdx=0;
+setInterval(()=>{
+  ['reminder-box','reminder-corp'].forEach(id=>{
+    const box=document.getElementById(id);
+    if(!box)return;
+    box.style.opacity='0';
+    setTimeout(()=>{rIdx=(rIdx+1)%rems.length;box.textContent=rems[rIdx];box.style.opacity='1';},400);
+  });
+},5000);
 
 // ── COMUNIDAD ──
 let selTag='';
@@ -634,34 +1050,13 @@ function postExp(){
   const name=document.getElementById('exp-name').value.trim()||'Anónimo';
   if(!text)return;
   const pill=selTag?`<span class="feed-pill">${tagLabels[selTag]}</span>`:'';
-  const div=document.createElement('div');
-  div.className='feed-entry';
+  const div=document.createElement('div');div.className='feed-entry';
   div.innerHTML=`<div class="feed-avatar">${name[0].toUpperCase()}</div><div><div style="font-size:13px;font-weight:700;margin-bottom:2px">${name} ${pill}</div><div style="font-size:14px;line-height:1.5">${text}</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Ahora mismo</div></div>`;
   document.getElementById('exp-feed').prepend(div);
   document.getElementById('exp-text').value='';
   document.getElementById('exp-name').value='';
   selTag='';document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('on'));
 }
-// ── RECORDATORIOS ROTATIVOS ──
-const reminders=[
-  'No tienes que hacerlo perfecto. Hecho > perfecto.',
-  'Enmascararse agota. Aquí no tienes que hacerlo.',
-  'Tu cerebro funciona diferente — no menos.',
-  'Un inicio de 5 minutos cuenta. Aparecer cuenta.',
-  'Pequeños pasos cuentan. Aparecer cuenta.',
-  'No hay una sola forma correcta de ser productiva.',
-];
-let rIdx=0;
-setInterval(()=>{
-  const box=document.getElementById('reminder-box');
-  if(!box)return;
-  box.style.opacity='0';
-  setTimeout(()=>{
-    rIdx=(rIdx+1)%reminders.length;
-    box.textContent=reminders[rIdx];
-    box.style.opacity='1';
-  },400);
-},4000);
 </script>
 </body>
 </html>
