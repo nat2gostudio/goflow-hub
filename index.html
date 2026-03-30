@@ -69,7 +69,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .tip-box{margin:0 16px 12px;padding:20px;background:var(--btngreen);border-radius:var(--radius);font-size:14px;line-height:1.7;font-weight:500}
 
 /* TIMER */
-.timer-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:8px 0}
+.timer-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:4px 0}
 .dur-row{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
 .dur-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .dur-btn.on{background:var(--text);color:#fff;border-color:var(--text)}
@@ -121,6 +121,7 @@ textarea.task-input{resize:none;min-height:80px}
 .victoria-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:24px;text-align:center}
 .victoria-cat{width:130px;margin-bottom:16px;animation:popin .4s cubic-bezier(.175,.885,.32,1.275)}
 @keyframes popin{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .premio-input{width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:'Quicksand',sans-serif;font-size:14px;color:var(--text);background:#fafafa;outline:none;margin-bottom:10px}
 .premio-guardado{display:none;font-size:13px;color:#3a7a1a;font-weight:600;text-align:center;margin-top:6px}
 
@@ -141,6 +142,10 @@ textarea.task-input{resize:none;min-height:80px}
 .habit-check{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
 .habit-check.on{background:#111;border-color:#111}
 .vibe-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.basic-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 4px;border-radius:14px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;font-size:22px;font-family:'Quicksand',sans-serif;transition:all .2s}
+.basic-btn span{font-size:11px;font-weight:700;color:var(--muted)}
+.basic-btn.on{background:var(--btngreen);border-color:#aad06a}
+.basic-btn.on span{color:var(--text)}
 .vibe-btn.on{background:var(--btngreen);border-color:#aad06a}
 
 /* MISC */
@@ -212,8 +217,8 @@ textarea.task-input{resize:none;min-height:80px}
     <input type="range" id="sl-f" min="0" max="10" value="5" oninput="slUpdate('f',this.value)">
     <div class="slider-hint" id="hint-f">5 — Más o menos</div>
   </div>
-  <div style="flex:1"></div>
-  <button class="btn-dark" onclick="go('s-task')">Siguiente</button>
+  <div style="flex:1;min-height:40px"></div>
+  <button class="btn-dark" onclick="go('s-task')" style="margin-bottom:24px">Siguiente</button>
 </div>
 
 <!-- ══ TAREA ══ -->
@@ -228,8 +233,8 @@ textarea.task-input{resize:none;min-height:80px}
     <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Opcional — la sugerencia se adaptará a ella.</p>
     <input type="text" id="task-main" class="task-input" placeholder="Ej: preparar presentación, responder emails...">
   </div>
-  <div style="flex:1"></div>
-  <div class="btn-row">
+  <div style="flex:1;min-height:40px"></div>
+  <div class="btn-row" style="margin-bottom:24px">
     <button class="btn-ghost" onclick="go('s-checkin')">Atrás</button>
     <button class="btn-dark" onclick="getSugerencia()">Obtener sugerencia</button>
   </div>
@@ -251,7 +256,7 @@ textarea.task-input{resize:none;min-height:80px}
   <!-- 2 verdes + 2 gris -->
   <div class="btn-row" style="flex-wrap:wrap;gap:10px">
     <button class="btn-light" onclick="navGo('s-timer','nav-timer')" style="flex:1;min-width:140px;margin:0">¡Vamos! ✨</button>
-    <button class="btn-light" onclick="goChunk()" style="flex:1;min-width:140px;margin:0">Ayúdame a empezar 🚀</button>
+    <button class="btn-light" onclick="goChunk()" style="flex:1;min-width:140px;margin:0">Micro Tareas 🚀</button>
   </div>
   <div class="btn-row" style="flex-wrap:wrap;gap:10px;margin-top:0">
     <button class="btn-ghost" onclick="tipMasSuave()" style="flex:1;min-width:140px;margin:0">No puedo ahora</button>
@@ -308,9 +313,6 @@ textarea.task-input{resize:none;min-height:80px}
 <div id="s-timer" class="screen">
   <div style="display:flex;flex-direction:column;align-items:center;padding:20px 24px 0">
     <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" style="width:64px;height:64px;margin-bottom:4px" alt="GoFlow">
-    <div id="pomodoro-hint" style="text-align:center;font-size:11px;color:var(--muted);line-height:1.5;max-width:300px;margin-bottom:4px">
-      El <strong style="color:var(--text)">Método Pomodoro</strong> son 25 min de foco y 5 de descanso, pero aquí mandas tú. <strong style="color:var(--text)">Importante:</strong> descansa, muévete y bebe agua entre bloques.
-    </div>
   </div>
   <div class="timer-wrap">
     <div class="dur-row">
@@ -340,8 +342,8 @@ textarea.task-input{resize:none;min-height:80px}
       <button class="noise-pill" id="np-waves" onclick="setNoise('waves')">🌊 Olas</button>
     </div>
   </div>
-  <button class="btn-light" id="t-btn" onclick="toggleTimer()">Iniciar</button>
-  <button class="btn-ghost" id="t-reset" onclick="resetTimer()" style="display:none">Reset</button>
+  <button class="btn-light" id="t-btn" onclick="toggleTimer()" style="margin-bottom:8px">Iniciar</button>
+  <button class="btn-ghost" id="t-reset" onclick="resetTimer()" style="display:none;margin-bottom:24px">Reset</button>
 </div>
 
 <!-- ══ VICTORIA (timer acaba) ══ -->
@@ -384,13 +386,8 @@ textarea.task-input{resize:none;min-height:80px}
 <!-- ══ TOOLS ══ -->
 <div id="s-tools" class="screen" style="overflow-y:auto">
   <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
-  <div class="section-title">El primer paso para arrancar</div>
-  <div class="card">
-    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">No hace falta saber todo el camino. Solo el primer paso.</p>
-    <input type="text" id="big-task" class="task-input" placeholder="¿Qué estás evitando hacer?" style="margin-bottom:10px">
-    <button class="btn-ghost" onclick="breakTask()" style="width:100%;margin:0">Dame el primer paso</button>
-    <div id="task-steps" style="margin-top:12px"></div>
-  </div>
+
+  <!-- 1. CÓMO TE SIENTES -->
   <div class="section-title">¿Cómo te sientes ahora?</div>
   <div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px">
     <button class="vibe-btn" onclick="this.classList.toggle('on')">Hiperfocusing</button>
@@ -402,8 +399,31 @@ textarea.task-input{resize:none;min-height:80px}
     <button class="vibe-btn" onclick="this.classList.toggle('on')">Función ejecutiva: off</button>
     <button class="vibe-btn" onclick="this.classList.toggle('on')">Con máscara puesta</button>
   </div>
+
+  <!-- 2. BÁSICOS DEL DÍA -->
+  <div class="section-title">Hoy, en básico</div>
+  <div class="card" style="margin-bottom:12px">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px">¿Cómo ha ido esto hoy? No para controlarte — para recordártelo con cariño.</p>
+    <div style="display:flex;gap:8px;justify-content:space-between">
+      <button class="basic-btn" id="bb-agua" onclick="toggleBasic('agua',this)">💧<br><span>Agua</span></button>
+      <button class="basic-btn" id="bb-ej" onclick="toggleBasic('ej',this)">🏃<br><span>Ejercicio</span></button>
+      <button class="basic-btn" id="bb-sol" onclick="toggleBasic('sol',this)">☀️<br><span>Luz solar</span></button>
+      <button class="basic-btn" id="bb-sueno" onclick="toggleBasic('sueno',this)">😴<br><span>Sueño</span></button>
+    </div>
+  </div>
+
+  <!-- 3. PRIMER PASO -->
+  <div class="section-title">El primer paso para arrancar</div>
+  <div class="card">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">No hace falta saber todo el camino. Solo el primer paso.</p>
+    <input type="text" id="big-task" class="task-input" placeholder="¿Qué estás evitando hacer?" style="margin-bottom:10px">
+    <button class="btn-ghost" onclick="breakTask()" style="width:100%;margin:0">Dame el primer paso</button>
+    <div id="task-steps" style="margin-top:12px"></div>
+  </div>
+
+  <!-- 4. RECORDATORIO -->
   <div class="section-title">Recordatorio</div>
-  <div style="padding:0 16px 20px">
+  <div style="padding:0 16px 24px">
     <div id="reminder-box" class="reminder" style="text-align:center;font-size:15px">No tienes que hacerlo perfecto. Hecho > perfecto.</div>
   </div>
 </div>
@@ -411,7 +431,7 @@ textarea.task-input{resize:none;min-height:80px}
 <!-- ══ RECURSOS ══ -->
 <div id="s-recursos" class="screen" style="overflow-y:auto">
   <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
-  <div class="section-title" style="text-align:center">Planners y guías TDAH</div>
+  <div class="section-title" style="text-align:center;margin-bottom:16px">Planners y guías TDAH</div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 16px 12px">
     <a href="https://payhip.com/Nat2GoStudio" target="_blank" style="display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-decoration:none;color:var(--text);text-align:center">
       <span style="font-size:28px;margin-bottom:6px">💰</span>
@@ -448,6 +468,23 @@ textarea.task-input{resize:none;min-height:80px}
 <!-- ══ COMUNIDAD ══ -->
 <div id="s-comunidad" class="screen" style="overflow-y:auto">
   <img src="https://i.ibb.co/67V7tJ0v/Nat2-Go-Go-Flow.png" class="logo-top" alt="GoFlow">
+
+  <!-- BODY DOUBLING -->
+  <div class="section-title">Body Doubling</div>
+  <div class="card" style="margin-bottom:12px">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6">Trabaja acompañada, aunque sea en silencio. Hay personas ahora mismo enfocándose — únete.</p>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;flex-shrink:0"></div>
+      <span style="font-size:13px;font-weight:600" id="bd-count-txt">3 personas trabajando ahora</span>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="bd-avatars">
+      <span style="font-size:12px;padding:4px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--border);color:var(--muted)">🌿 María</span>
+      <span style="font-size:12px;padding:4px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--border);color:var(--muted)">⚡ Alex</span>
+      <span style="font-size:12px;padding:4px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--border);color:var(--muted)">🎯 Sam</span>
+    </div>
+    <button id="bd-btn" onclick="toggleBD()" style="width:100%;padding:13px;border-radius:999px;background:#111;color:#fff;border:none;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s">Unirme a la sala</button>
+  </div>
+
   <div class="section-title">Comparte una vivencia</div>
   <div class="card">
     <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Victorias, dificultades, descubrimientos — todo es bienvenido.</p>
@@ -1036,6 +1073,32 @@ setInterval(()=>{
     setTimeout(()=>{rIdx=(rIdx+1)%rems.length;box.textContent=rems[rIdx];box.style.opacity='1';},400);
   });
 },5000);
+
+// ── BODY DOUBLING ──
+let bdActive=false;
+function toggleBD(){
+  const btn=document.getElementById('bd-btn');
+  const avatars=document.getElementById('bd-avatars');
+  const countTxt=document.getElementById('bd-count-txt');
+  bdActive=!bdActive;
+  if(bdActive){
+    btn.textContent='✓ Estoy en la sala — salir';
+    btn.style.background='var(--btngreen)';btn.style.color='#111';
+    const me=document.createElement('span');
+    me.id='bd-me';me.textContent='🌟 Tú';
+    me.style.cssText='font-size:12px;padding:4px 12px;border-radius:999px;background:var(--btngreen);border:1px solid #aad06a;color:var(--text)';
+    avatars.appendChild(me);
+    countTxt.textContent=avatars.children.length+' personas trabajando ahora';
+  }else{
+    btn.textContent='Unirme a la sala';
+    btn.style.background='#111';btn.style.color='#fff';
+    document.getElementById('bd-me')?.remove();
+    countTxt.textContent=avatars.children.length+' personas trabajando ahora';
+  }
+}
+
+// ── BÁSICOS ──
+function toggleBasic(key,el){el.classList.toggle('on');}
 
 // ── COMUNIDAD ──
 let selTag='';
