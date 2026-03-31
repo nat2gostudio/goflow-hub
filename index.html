@@ -758,22 +758,49 @@ let cSteps=[],cDone=0,cFirstDone=false;
 const CELEB_45=0.45,CELEB_75=0.75;
 let celeb45done=false,celeb75done=false;
 
-function goChunk(){
+async function goChunk(){
   const tarea=document.getElementById('task-main')?.value||'Tu tarea';
+  const energia=document.getElementById('sl-e')?.value||5;
+  const foco=document.getElementById('sl-f')?.value||5;
+
   document.getElementById('chunk-titulo').textContent=tarea;
-  const t=tarea.toLowerCase();
-  let steps;
-  if(t.includes('presentaci')||t.includes('slides'))steps=chunkLib.pres;
-  else if(t.includes('email')||t.includes('correo'))steps=chunkLib.email;
-  else if(t.includes('diseño')||t.includes('logo'))steps=chunkLib.diseno;
-  else steps=chunkLib.default;
-  cSteps=[...steps];cDone=0;cFirstDone=false;celeb45done=false;celeb75done=false;
-  document.getElementById('chunk-paso0').textContent=cSteps[0];
+  document.getElementById('chunk-paso0').textContent='Cargando microtareas... 🧠';
   document.getElementById('chunk-btn0').className='chunk-done-btn';
   document.getElementById('chunk-btn0').textContent='✓ Hecho';
   document.getElementById('chunk-rest').style.display='none';
   document.getElementById('celeb-parcial').style.display='none';
-  updProg();go('s-chunk');
+  cDone=0;cFirstDone=false;celeb45done=false;celeb75done=false;
+  updProg();
+  go('s-chunk');
+
+  try{
+    const r=await fetch('https://hook.eu1.make.com/975y2fx581i214073nim3th28wqr7tar',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({tarea,energia,foco})
+    });
+    const data=await r.json();
+    let steps=[];
+    if(data.microtareas_limpias){
+      steps=JSON.parse(data.microtareas_limpias);
+    }else if(Array.isArray(data)){
+      steps=data;
+    }
+    if(steps.length>0){
+      cSteps=steps;
+    }else{
+      throw new Error('empty');
+    }
+  }catch(err){
+    const t=tarea.toLowerCase();
+    if(t.includes('presentaci')||t.includes('slides'))cSteps=chunkLib.pres;
+    else if(t.includes('email')||t.includes('correo'))cSteps=chunkLib.email;
+    else if(t.includes('diseño')||t.includes('logo'))cSteps=chunkLib.diseno;
+    else cSteps=chunkLib.default;
+  }
+
+  document.getElementById('chunk-paso0').textContent=cSteps[0];
+  updProg();
 }
 
 function completarPrimero(){
